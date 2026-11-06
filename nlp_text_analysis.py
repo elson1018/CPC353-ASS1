@@ -1,134 +1,186 @@
-"""
-CPC353 Natural Language Processing - Assignment 1
-Topic: Code-Switching in English-Malay Food Product Reviews
-Script: Text Analytics & NLP Pipeline (Concordance KWIC & N-gram Collocations)
+"""Reproducible descriptive analysis of the CPC353 review corpus (stdlib only)."""
 
-Instructions to run:
-    python nlp_text_analysis.py
-"""
-
+import argparse
 import csv
+import json
 import re
 from collections import Counter
+from datetime import date
 from pathlib import Path
+from urllib.parse import urlparse
 
-# Paths
 WORKSPACE_DIR = Path(__file__).resolve().parent
-CSV_PATH = WORKSPACE_DIR / "corpus_data.csv"
-CONCORDANCE_OUT = WORKSPACE_DIR / "concordance_results.csv"
-BIGRAM_OUT = WORKSPACE_DIR / "top_bigrams.csv"
+FIELDS = ["ReviewID", "DataOrigin", "Category", "ProductName", "SourcePlatform_Model",
+          "SourceURL_Seed", "Rating", "ReviewDate", "ReviewText",
+          "LanguageClassification", "CodeSwitchingType", "Notes_Prompt"]
+REAL = "Self-Collected (Real)"
+AI = "AI-Generated (LLM)"
+LANGUAGES = ("English", "Malay", "Code-switched", "Other/uncertain")
+SWITCHES = ("Intra-sentential", "Inter-sentential", "Tag Switching", "N/A")
+KEYWORDS = ("sedap", "pedas", "kuah", "worth", "packaging", "repeat", "padu", "hancur")
+BILINGUAL_STOPWORDS = set("""the and is in to of it for with on at by from this that my so all
+ dan yang di ke ini itu untuk dengan pada dari oleh adalah iaitu dalam pun lah je kan tu dia ni
+ dah ada tak tidak nak akan sangat amat""".split())
+TOKEN = re.compile(r"[^\W_]+(?:[-'’][^\W_]+)*", re.UNICODE)
+KWIC_FIELDS = ["ReviewID", "DataOrigin", "Keyword", "LeftContext", "RightContext",
+               "LanguageClassification", "CodeSwitchingType", "Rating", "FullText"]
+ISSUE_FIELDS = ["ReviewID", "Severity", "Issue", "Detail"]
+NGRAM_FIELDS = ["Group", "Reviews", "EligibleNgramPositions", "Ngram", "Frequency",
+                "Per1000EligiblePositions"]
 
-# Bilingual Stopwords (English & Malay common grammatical particles/function words)
-BILINGUAL_STOPWORDS = {
-    "the", "and", "is", "in", "to", "of", "it", "for", "with", "on", "at", "by", "from", "this", "that", "my", "so", "all",
-    "dan", "yang", "di", "ke", "ini", "itu", "untuk", "dengan", "pada", "dari", "oleh", "adalah", "iaitu", "dalam",
-    "pun", "lah", "je", "kan", "tu", "dia", "ni", "dah", "ada", "tak", "tidak", "nak", "akan", "sangat", "amat"
-}
 
-KEYWORDS = ["sedap", "pedas", "kuah", "worth", "packaging", "repeat", "padu", "hancur"]
+def clean_and_tokenize(text):
+    """Lowercase Unicode words/numbers; retain hyphens and contractions."""
+    return TOKEN.findall(text.lower())
 
-def clean_and_tokenize(text: str) -> list[str]:
-    """Cleans text of punctuation and extracts lowercase word tokens."""
-    clean = re.sub(r"[^\w\s-]", " ", text.lower())
-    tokens = [w for w in clean.split() if len(w) > 1]
-    return tokens
 
-def extract_concordances(reviews: list[dict], window_size: int = 4) -> list[dict]:
-    """Generates Key Word in Context (KWIC) concordance lines."""
-    concordances = []
-    for r in reviews:
-        words = r["ReviewText"].split()
-        for i, raw_w in enumerate(words):
-            clean_w = re.sub(r"[^\w]", "", raw_w).lower()
-            if clean_w in KEYWORDS:
-                left_start = max(0, i - window_size)
-                left_context = " ".join(words[left_start:i])
-                right_end = min(len(words), i + 1 + window_size)
-                right_context = " ".join(words[i + 1:right_end])
-                
-                concordances.append({
-                    "ReviewID": r["ReviewID"],
-                    "DataOrigin": r["DataOrigin"],
-                    "Keyword": clean_w.upper(),
-                    "LeftContext": left_context,
-                    "RightContext": right_context,
-                    "LanguageClassification": r["LanguageClassification"],
-                    "CodeSwitchingType": r["CodeSwitchingType"],
-                    "Rating": r["Rating"],
-                    "FullText": r["ReviewText"]
-                })
-    return concordances
+def sentences(text):
+    """Heuristic boundaries: . ! ? … and newlines; not a trained sentence model."""
+    return [s for s in re.split(r"[.!?…\r\n]+", text) if s.strip()]
 
-def extract_ngrams(reviews: list[dict], n: int = 2, filter_stopwords: bool = True) -> Counter:
-    """Extracts n-grams from a list of review dictionaries."""
-    ngram_counts = Counter()
-    for r in reviews:
-        tokens = clean_and_tokenize(r["ReviewText"])
-        if len(tokens) < n:
-            continue
-        for i in range(len(tokens) - n + 1):
-            gram = tuple(tokens[i:i + n])
-            if filter_stopwords:
-                # If all words in the tuple are stopwords, skip
-                if all(w in BILINGUAL_STOPWORDS for w in gram):
-                    continue
-            ngram_counts[" ".join(gram)] += 1
-    return ngram_counts
 
-def main():
-    print("=" * 65)
-    print(" CPC353 NLP ASSIGNMENT 1: TEXT ANALYTICS PIPELINE")
-    print("=" * 65)
-
-    if not CSV_PATH.exists():
-        print(f"Error: Could not find dataset at {CSV_PATH}")
-        return
-
-    # 1. Load Data
-    with open(CSV_PATH, mode="r", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        reviews = list(reader)
-
-    print(f"Loaded {len(reviews)} reviews from {CSV_PATH.name}\n")
-
-    # 2. Technique 1: Concordance Analysis (KWIC)
-    print("--> Technique 1: Generating Concordance Lines (KWIC)...")
-    concordances = extract_concordances(reviews, window_size=4)
-    print(f"    Total Concordance Hits: {len(concordances)}")
-
-    with open(CONCORDANCE_OUT, mode="w", encoding="utf-8", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=concordances[0].keys())
+def write_csv(path, fields, rows):
+    with path.open("w", encoding="utf-8", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=fields)
         writer.writeheader()
-        writer.writerows(concordances)
-    print(f"    Exported concordance lines to: {CONCORDANCE_OUT.name}\n")
+        writer.writerows(rows)
 
-    # 3. Technique 2: N-gram Extraction
-    print("--> Technique 2: Extracting N-gram Collocations...")
-    overall_bigrams = extract_ngrams(reviews, n=2, filter_stopwords=True)
-    code_switched_reviews = [r for r in reviews if r["LanguageClassification"] == "Code-switched"]
-    code_bigrams = extract_ngrams(code_switched_reviews, n=2, filter_stopwords=True)
 
-    real_reviews = [r for r in reviews if r["DataOrigin"] == "Self-Collected (Real)"]
-    ai_reviews = [r for r in reviews if r["DataOrigin"] == "AI-Generated (LLM)"]
-    real_bigrams = extract_ngrams(real_reviews, n=2, filter_stopwords=True)
-    ai_bigrams = extract_ngrams(ai_reviews, n=2, filter_stopwords=True)
+def load_reviews(path):
+    """Reject malformed records, then retain the first normalized text duplicate."""
+    with path.open(encoding="utf-8-sig", newline="") as f:
+        reader = csv.DictReader(f)
+        missing = set(FIELDS) - set(reader.fieldnames or [])
+        if missing:
+            raise ValueError("Missing columns: " + ", ".join(sorted(missing)))
+        raw = list(reader)
+    retained, issues = [], []
+    seen_ids, seen_texts = set(), set()
+    rejected = duplicates = 0
+    for line, row in enumerate(raw, 2):
+        rid = (row.get("ReviewID") or "").strip()
+        errors = []
+        if None in row or any(row.get(k) is None for k in FIELDS):
+            errors.append("Wrong number of CSV fields")
+        for k in FIELDS:
+            if not (row.get(k) or "").strip():
+                errors.append("Missing " + k)
+        if row.get("DataOrigin") not in (REAL, AI):
+            errors.append("Invalid DataOrigin")
+        if row.get("LanguageClassification") not in LANGUAGES:
+            errors.append("Invalid LanguageClassification")
+        if row.get("CodeSwitchingType") not in SWITCHES:
+            errors.append("Invalid CodeSwitchingType")
+        if row.get("Rating") not in ("1", "2", "3", "4", "5"):
+            errors.append("Rating must be an integer from 1 to 5")
+        try:
+            date.fromisoformat(row.get("ReviewDate") or "")
+        except ValueError:
+            errors.append("Invalid ISO review date")
+        if rid in seen_ids:
+            errors.append("Duplicate ReviewID")
+        if errors:
+            rejected += 1
+            issues.append(dict(zip(ISSUE_FIELDS, [rid, "error", "Rejected record",
+                                                  f"CSV line {line}: " + "; ".join(errors)])))
+            continue
+        seen_ids.add(rid)
+        normalized = " ".join(row["ReviewText"].casefold().split())
+        if normalized in seen_texts:
+            duplicates += 1
+            issues.append(dict(zip(ISSUE_FIELDS, [rid, "warning", "Duplicate text",
+                                                  "Removed case/whitespace-normalized duplicate"])))
+            continue
+        seen_texts.add(normalized)
+        # Keep original review text and annotation values unchanged.
+        retained.append({k: row[k] for k in FIELDS})
+    counts = {"collected": len(raw), "rejected_invalid": rejected,
+              "removed_duplicate_texts": duplicates, "retained": len(retained)}
+    return retained, issues, counts
 
-    pos_reviews = [r for r in reviews if int(r["Rating"]) >= 4]
-    neg_reviews = [r for r in reviews if int(r["Rating"]) <= 2]
-    pos_bigrams = extract_ngrams(pos_reviews, n=2, filter_stopwords=True)
-    neg_bigrams = extract_ngrams(neg_reviews, n=2, filter_stopwords=True)
 
-    # Export Top Bigrams to CSV
-    with open(BIGRAM_OUT, mode="w", encoding="utf-8", newline="") as f:
-        writer = csv.writer(f)
-        writer.writerow(["Ngram", "Frequency"])
-        for gram, count in overall_bigrams.most_common(25):
-            writer.writerow([gram, count])
-    print(f"    Exported top bigrams to: {BIGRAM_OUT.name}\n")
+def review_warnings(reviews):
+    issues = []
+    real_ids = {r["ReviewID"] for r in reviews if r["DataOrigin"] == REAL}
+    urls = {}
+    for r in reviews:
+        def warn(kind, detail):
+            issues.append(dict(zip(ISSUE_FIELDS, [r["ReviewID"], "review", kind, detail])))
+        if r["DataOrigin"] == AI:
+            if r["SourceURL_Seed"] not in real_ids:
+                warn("Missing seed", "Seed does not identify a retained real-labelled review")
+        else:
+            source = r["SourceURL_Seed"]
+            parsed = urlparse(source)
+            if parsed.scheme not in ("http", "https") or not parsed.netloc:
+                warn("Invalid source URL", source)
+            if "/discover/" in parsed.path:
+                warn("Discovery URL", "Confirm the original review permalink and verbatim text")
+            urls.setdefault(source, []).append(r)
+        mixed = r["LanguageClassification"] == "Code-switched"
+        if mixed == (r["CodeSwitchingType"] == "N/A"):
+            warn("Annotation mismatch", "Check language classification against switching type")
+        if "snack" in r["ProductName"].lower() and r["Category"] == "Instant Noodles":
+            warn("Category scope", "Noodle snack included in instant-noodle category; justify or revise manually")
+    for url, group in urls.items():
+        if len({r["ProductName"] for r in group}) > 1:
+            for r in group:
+                issues.append(dict(zip(ISSUE_FIELDS, [r["ReviewID"], "review", "Shared source across products",
+                    "Check that the source supports this product and review: " + url])))
+    return issues
 
-    # 4. Technique 3: Bilingual Micro-Lexicon Export
-    print("--> Technique 3: Exporting Bilingual Micro-Lexicon...")
-    lexicon_entries = [
+
+def extract_concordances(reviews, window_size=4):
+    if window_size < 0:
+        raise ValueError("window_size must be nonnegative")
+    out = []
+    for r in reviews:
+        for sentence in sentences(r["ReviewText"]):
+            matches = list(TOKEN.finditer(sentence))
+            for i, match in enumerate(matches):
+                if match.group().lower() not in KEYWORDS:
+                    continue
+                left = sentence[matches[max(0, i-window_size)].start():match.start()].strip() if i else ""
+                right = sentence[match.end():matches[min(len(matches)-1, i+window_size)].end()].strip() if window_size and i+1 < len(matches) else ""
+                if window_size == 0:
+                    left = ""
+                out.append({"ReviewID": r["ReviewID"], "DataOrigin": r["DataOrigin"],
+                    "Keyword": match.group().upper(), "LeftContext": left, "RightContext": right,
+                    "LanguageClassification": r["LanguageClassification"],
+                    "CodeSwitchingType": r["CodeSwitchingType"], "Rating": r["Rating"],
+                    "FullText": r["ReviewText"]})
+    return out
+
+
+def ngram_statistics(reviews, n=2, filter_stopwords=True):
+    if n < 1:
+        raise ValueError("n must be positive")
+    counts = Counter()
+    for r in reviews:
+        for sentence in sentences(r["ReviewText"]):
+            tokens = clean_and_tokenize(sentence)
+            for i in range(len(tokens)-n+1):
+                gram = tokens[i:i+n]
+                # Skip all-stopword spans without deleting tokens or creating adjacency.
+                if filter_stopwords and all(w in BILINGUAL_STOPWORDS for w in gram):
+                    continue
+                counts[" ".join(gram)] += 1
+    return counts, sum(counts.values())
+
+
+def extract_ngrams(reviews, n=2, filter_stopwords=True):
+    return ngram_statistics(reviews, n, filter_stopwords)[0]
+
+
+def ranked_ngrams(reviews, label, limit=25):
+    counts, denominator = ngram_statistics(reviews)
+    return [{"Group": label, "Reviews": len(reviews), "EligibleNgramPositions": denominator,
+             "Ngram": gram, "Frequency": count,
+             "Per1000EligiblePositions": round(count / denominator * 1000, 4)}
+            for gram, count in sorted(counts.items(), key=lambda item: (-item[1], item[0]))[:limit]]
+
+
+LEXICON_ENTRIES = [
         {"Term": "Sedap giler / gila", "StandardMalay": "Sangat lazat", "EnglishEquivalent": "Crazy delicious", "POS": "Adj + Intensifier", "Function": "Emotional emphasis on flavor", "Polarity": "Positive"},
         {"Term": "Padu / Padu giler", "StandardMalay": "Mantap / berkualiti tinggi", "EnglishEquivalent": "Solid / Top-notch", "POS": "Adjective", "Function": "Expressing rich texture/taste", "Polarity": "Positive"},
         {"Term": "Repeat order", "StandardMalay": "Membeli semula", "EnglishEquivalent": "Repurchase intent", "POS": "Verb phrase", "Function": "E-commerce satisfaction marker", "Polarity": "Positive"},
@@ -142,49 +194,98 @@ def main():
         {"Term": "Lah / Kan / Wehh", "StandardMalay": "Partikel wacana", "EnglishEquivalent": "Pragmatic discourse tags", "POS": "Pragmatic Particle", "Function": "In-group solidarity, affirmation", "Polarity": "Neutral"},
         {"Term": "Bubble wrap tebal", "StandardMalay": "Balutan gelembung tebal", "EnglishEquivalent": "Thick bubble wrap", "POS": "Noun phrase", "Function": "Delivery safety evaluation", "Polarity": "Positive"},
     ]
-    LEXICON_OUT = WORKSPACE_DIR / "bilingual_lexicon.csv"
-    with open(LEXICON_OUT, mode="w", encoding="utf-8", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=lexicon_entries[0].keys())
-        writer.writeheader()
-        writer.writerows(lexicon_entries)
-    print(f"    Exported {len(lexicon_entries)} lexicon entries to: {LEXICON_OUT.name}\n")
 
-    # 5. Display Summary Tables
-    print("=" * 65)
-    print("   TOP 10 CODE-SWITCHED BIGRAMS (MIXED ENGLISH-MALAY)")
-    print("=" * 65)
-    for rank, (gram, freq) in enumerate(code_bigrams.most_common(10), 1):
-        print(f" {rank:2d}. {gram:<25} (Freq: {freq})")
+LEXICON_VARIANTS = [
+    ["sedap giler", "sedap gila"], ["padu", "padu giler"], ["repeat order"],
+    ["kaw", "pekat kaw"], ["layan habis"], ["ngam", "ngam-ngam"],
+    ["kriuk-kriuk"], ["lembik"], ["pedas berapi", "nak mampus"],
+    ["hancur lebur"], ["lah", "kan", "wehh"], ["bubble wrap tebal"],
+]
 
-    print("\n" + "=" * 65)
-    print("   HUMAN REVIEWS VS. AI-GENERATED REVIEWS (TOP BIGRAMS)")
-    print("=" * 65)
-    print(f" {'Real Human (N=70)':<30} | {'AI Generated (N=70)':<30}")
-    print("-" * 65)
-    real_top = real_bigrams.most_common(6)
-    ai_top = ai_bigrams.most_common(6)
-    for (r_gram, r_cnt), (a_gram, a_cnt) in zip(real_top, ai_top):
-        print(f" {r_gram:<20} ({r_cnt})    |  {a_gram:<20} ({a_cnt})")
+def curated_lexicon(reviews):
+    """Manual glosses with exact contiguous token matches as corpus evidence."""
+    out = []
+    for entry, variants in zip(LEXICON_ENTRIES, LEXICON_VARIANTS):
+        ids, observed = [], set()
+        for review in reviews:
+            hit = False
+            for sentence in sentences(review["ReviewText"]):
+                tokens = clean_and_tokenize(sentence)
+                for variant in variants:
+                    phrase = clean_and_tokenize(variant)
+                    if any(tokens[i:i+len(phrase)] == phrase for i in range(len(tokens)-len(phrase)+1)):
+                        observed.add(variant)
+                        hit = True
+            if hit:
+                ids.append(review["ReviewID"])
+        out.append({**entry, "Method": "Manually curated; gloss and polarity require contextual review",
+                    "ObservedVariants": "; ".join(sorted(observed)),
+                    "UnobservedVariants": "; ".join(v for v in variants if v not in observed),
+                    "ReviewCount": len(ids), "ReviewIDs": "; ".join(ids)})
+    return out
 
-    print("\n" + "=" * 65)
-    print("   SENTIMENT POLARITY BIGRAM COMPARISON")
-    print("=" * 65)
-    print(f" {'Positive 4-5 Stars':<30} | {'Negative 1-2 Stars':<30}")
-    print("-" * 65)
-    pos_top = pos_bigrams.most_common(6)
-    neg_top = neg_bigrams.most_common(6)
-    for (p_gram, p_cnt), (n_gram, n_cnt) in zip(pos_top, neg_top):
-        print(f" {p_gram:<20} ({p_cnt})    |  {n_gram:<20} ({n_cnt})")
 
-    print("\n" + "=" * 65)
-    print("   SAMPLE KWIC CONCORDANCE LINES")
-    print("=" * 65)
-    sample_keywords = ["SEDAP", "PEDAS", "REPEAT", "WORTH", "KUAH"]
-    sample_hits = [c for c in concordances if c["Keyword"] in sample_keywords][:8]
-    for hit in sample_hits:
-        print(f" {hit['ReviewID']:<10} | {hit['LeftContext']:>20} | [{hit['Keyword']}] | {hit['RightContext']:<25} ({hit['CodeSwitchingType']})")
+def run(input_path, output_dir):
+    reviews, issues, cleaning = load_reviews(input_path)
+    issues.extend(review_warnings(reviews))
+    output_dir.mkdir(parents=True, exist_ok=True)
+    write_csv(output_dir / "data_quality_issues.csv", ISSUE_FIELDS, issues)
+    real = [r for r in reviews if r["DataOrigin"] == REAL]
+    ai = [r for r in reviews if r["DataOrigin"] == AI]
+    summary = {"cleaning": cleaning, "language_distribution": dict(Counter(r["LanguageClassification"] for r in reviews)),
+        "origins": dict(Counter(r["DataOrigin"] for r in reviews)),
+        "rating_distribution": dict(sorted(Counter(r["Rating"] for r in reviews).items())),
+        "manual_review_flags": sum(i["Severity"] == "review" for i in issues),
+        "provenance_verified": False,
+        "method": {"unit": "complete review; n-grams and KWIC bounded by heuristic sentences",
+            "sentence_boundaries": ". ! ? … and newlines", "normalization": "lowercase; retain hyphens, apostrophes and single-character tokens",
+            "stopwords": "discard only n-grams whose tokens are all stopwords",
+            "frequency_denominator": "all eligible bigram occurrences in the group before top-25 selection",
+            "labels": "original annotations; not automatically validated linguistically",
+            "sentiment": "rating proxy: 4–5 positive, 3 neutral, 1–2 negative",
+            "synthetic_dependence": "AI reviews derive from real-labelled seeds and are not independent observations"}}
+    (output_dir / "dataset_summary.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False)+"\n", encoding="utf-8")
+    write_csv(output_dir / "cleaned_corpus.csv", FIELDS, reviews)
+    write_csv(output_dir / "concordance_results.csv", KWIC_FIELDS, extract_concordances(reviews))
+    language_rows = [{"LanguageClassification": lang, "RealLabelled": sum(r["LanguageClassification"] == lang for r in real),
+        "AIGenerated": sum(r["LanguageClassification"] == lang for r in ai),
+        "Total": sum(r["LanguageClassification"] == lang for r in reviews),
+        "Percent": round(sum(r["LanguageClassification"] == lang for r in reviews)/len(reviews)*100, 2) if reviews else 0}
+        for lang in LANGUAGES]
+    write_csv(output_dir / "language_distribution.csv", ["LanguageClassification", "RealLabelled", "AIGenerated", "Total", "Percent"], language_rows)
+    switch_rows = []
+    for label, subset in [("All", reviews), (REAL, real), (AI, ai)]:
+        mixed = [r for r in subset if r["LanguageClassification"] == "Code-switched"]
+        for switch in SWITCHES:
+            count = sum(r["CodeSwitchingType"] == switch for r in mixed)
+            switch_rows.append({"Group": label, "SwitchingType": switch, "Count": count,
+                                "CodeSwitchedReviews": len(mixed), "Percent": round(count/len(mixed)*100, 2) if mixed else 0})
+    write_csv(output_dir / "switching_distribution.csv", ["Group", "SwitchingType", "Count", "CodeSwitchedReviews", "Percent"], switch_rows)
+    groups = [("All", reviews), ("Code-switched reviews", [r for r in reviews if r["LanguageClassification"] == "Code-switched"]),
+              (REAL, real), (AI, ai)]
+    for label, subset in [("All", reviews), (REAL, real), (AI, ai)]:
+        for sentiment, ratings in [("Positive", {"4", "5"}), ("Neutral", {"3"}), ("Negative", {"1", "2"})]:
+            groups.append((label + ": " + sentiment, [r for r in subset if r["Rating"] in ratings]))
+    write_csv(output_dir / "top_bigrams.csv", NGRAM_FIELDS, [row for label, subset in groups for row in ranked_ngrams(subset, label)])
+    lexicon = curated_lexicon(reviews)
+    write_csv(output_dir / "bilingual_lexicon.csv", list(lexicon[0]), lexicon)
+    print(f"Collected {cleaning['collected']}; retained {len(reviews)}; invalid {cleaning['rejected_invalid']}; duplicates {cleaning['removed_duplicate_texts']}.")
+    print(f"Analysis written to {output_dir}. Source provenance and linguistic labels require manual verification.")
+    return summary
 
-    print("\nPipeline execution completed successfully!")
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--input", type=Path, default=WORKSPACE_DIR / "corpus_data.csv")
+    parser.add_argument("--output-dir", type=Path, default=WORKSPACE_DIR / "outputs")
+    args = parser.parse_args()
+    try:
+        summary = run(args.input, args.output_dir)
+    except (ValueError, OSError, csv.Error) as exc:
+        parser.exit(2, f"Error: {exc}\n")
+    if summary["cleaning"]["rejected_invalid"]:
+        parser.exit(1, "Invalid records excluded; inspect data_quality_issues.csv before using findings.\n")
+
 
 if __name__ == "__main__":
     main()

@@ -1,0 +1,19 @@
+ReviewID,Severity,Issue,Detail
+REV-018,review,Category scope,Noodle snack included in instant-noodle category; justify or revise manually
+REV-019,review,Discovery URL,Confirm the original review permalink and verbatim text
+REV-029,review,Discovery URL,Confirm the original review permalink and verbatim text
+REV-038,review,Category scope,Noodle snack included in instant-noodle category; justify or revise manually
+REV-049,review,Category scope,Noodle snack included in instant-noodle category; justify or revise manually
+REV-057,review,Discovery URL,Confirm the original review permalink and verbatim text
+REV-061,review,Category scope,Noodle snack included in instant-noodle category; justify or revise manually
+REV-AI-016,review,Category scope,Noodle snack included in instant-noodle category; justify or revise manually
+REV-AI-036,review,Category scope,Noodle snack included in instant-noodle category; justify or revise manually
+REV-AI-047,review,Category scope,Noodle snack included in instant-noodle category; justify or revise manually
+REV-AI-059,review,Category scope,Noodle snack included in instant-noodle category; justify or revise manually
+REV-004,review,Shared source across products,Check that the source supports this product and review: https://maps.google.com/?cid=1084291827491024
+REV-016,review,Shared source across products,Check that the source supports this product and review: https://maps.google.com/?cid=1084291827491024
+REV-028,review,Shared source across products,Check that the source supports this product and review: https://maps.google.com/?cid=1084291827491024
+REV-034,review,Shared source across products,Check that the source supports this product and review: https://maps.google.com/?cid=1084291827491024
+REV-040,review,Shared source across products,Check that the source supports this product and review: https://maps.google.com/?cid=1084291827491024
+REV-055,review,Shared source across products,Check that the source supports this product and review: https://maps.google.com/?cid=1084291827491024
+REV-068,review,Shared source across products,Check that the source supports this product and review: https://maps.google.com/?cid=1084291827491024

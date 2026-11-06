@@ -1,0 +1,37 @@
+{
+  "cleaning": {
+    "collected": 140,
+    "rejected_invalid": 0,
+    "removed_duplicate_texts": 0,
+    "retained": 140
+  },
+  "language_distribution": {
+    "Code-switched": 90,
+    "English": 23,
+    "Malay": 23,
+    "Other/uncertain": 4
+  },
+  "origins": {
+    "Self-Collected (Real)": 70,
+    "AI-Generated (LLM)": 70
+  },
+  "rating_distribution": {
+    "1": 9,
+    "2": 11,
+    "3": 10,
+    "4": 42,
+    "5": 68
+  },
+  "manual_review_flags": 18,
+  "provenance_verified": false,
+  "method": {
+    "unit": "complete review; n-grams and KWIC bounded by heuristic sentences",
+    "sentence_boundaries": ". ! ? … and newlines",
+    "normalization": "lowercase; retain hyphens, apostrophes and single-character tokens",
+    "stopwords": "discard only n-grams whose tokens are all stopwords",
+    "frequency_denominator": "all eligible bigram occurrences in the group before top-25 selection",
+    "labels": "original annotations; not automatically validated linguistically",
+    "sentiment": "rating proxy: 4–5 positive, 3 neutral, 1–2 negative",
+    "synthetic_dependence": "AI reviews derive from real-labelled seeds and are not independent observations"
+  }
+}
