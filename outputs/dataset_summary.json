@@ -22,7 +22,7 @@
     "4": 42,
     "5": 68
   },
-  "manual_review_flags": 18,
+  "manual_review_flags": 10,
   "provenance_verified": false,
   "method": {
     "unit": "complete review; n-grams and KWIC bounded by heuristic sentences",

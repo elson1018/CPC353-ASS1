@@ -1,57 +1,58 @@
 Group,Reviews,EligibleNgramPositions,Ngram,Frequency,Per1000EligiblePositions
-All,140,1715,dia memang,8,4.6647
-All,140,1715,repeat order,6,3.4985
-All,140,1715,the spicy,6,3.4985
-All,140,1715,bawang goreng,4,2.3324
-All,140,1715,bubble wrap,4,2.3324
-All,140,1715,compared to,4,2.3324
-All,140,1715,pekat dan,4,2.3324
-All,140,1715,rasa cheese,4,2.3324
-All,140,1715,rasa masam,4,2.3324
-All,140,1715,sweet soy,4,2.3324
-All,140,1715,broth with,3,1.7493
-All,140,1715,curry broth,3,1.7493
-All,140,1715,for instant,3,1.7493
-All,140,1715,hirup kuah,3,1.7493
-All,140,1715,instant noodles,3,1.7493
-All,140,1715,kari putih,3,1.7493
-All,140,1715,kuah santan,3,1.7493
-All,140,1715,memang layan,3,1.7493
-All,140,1715,mi sampai,3,1.7493
-All,140,1715,rasa macam,3,1.7493
-All,140,1715,rasa pedas,3,1.7493
-All,140,1715,rich and,3,1.7493
-All,140,1715,soy sauce,3,1.7493
-All,140,1715,tak pernah,3,1.7493
-All,140,1715,telur mata,3,1.7493
-Code-switched reviews,90,1165,dia memang,8,6.867
-Code-switched reviews,90,1165,repeat order,6,5.1502
-Code-switched reviews,90,1165,the spicy,5,4.2918
-Code-switched reviews,90,1165,rasa cheese,4,3.4335
-Code-switched reviews,90,1165,broth with,3,2.5751
-Code-switched reviews,90,1165,bubble wrap,3,2.5751
-Code-switched reviews,90,1165,curry broth,3,2.5751
-Code-switched reviews,90,1165,for instant,3,2.5751
-Code-switched reviews,90,1165,instant noodles,3,2.5751
-Code-switched reviews,90,1165,rasa macam,3,2.5751
-Code-switched reviews,90,1165,rich and,3,2.5751
-Code-switched reviews,90,1165,telur mata,3,2.5751
-Code-switched reviews,90,1165,after eating,2,1.7167
-Code-switched reviews,90,1165,and creamy,2,1.7167
-Code-switched reviews,90,1165,and spicy,2,1.7167
-Code-switched reviews,90,1165,and thick,2,1.7167
-Code-switched reviews,90,1165,banyak sangat,2,1.7167
-Code-switched reviews,90,1165,bau serai,2,1.7167
-Code-switched reviews,90,1165,bawang goreng,2,1.7167
-Code-switched reviews,90,1165,but still,2,1.7167
-Code-switched reviews,90,1165,but the,2,1.7167
-Code-switched reviews,90,1165,campur telur,2,1.7167
-Code-switched reviews,90,1165,carbonara dia,2,1.7167
-Code-switched reviews,90,1165,carbonara sauce,2,1.7167
-Code-switched reviews,90,1165,cheese dia,2,1.7167
+All,140,1755,dia memang,8,4.5584
+All,140,1755,repeat order,6,3.4188
+All,140,1755,the spicy,6,3.4188
+All,140,1755,bawang goreng,4,2.2792
+All,140,1755,bubble wrap,4,2.2792
+All,140,1755,compared to,4,2.2792
+All,140,1755,pekat dan,4,2.2792
+All,140,1755,rasa cheese,4,2.2792
+All,140,1755,rasa masam,4,2.2792
+All,140,1755,sweet soy,4,2.2792
+All,140,1755,broth with,3,1.7094
+All,140,1755,curry broth,3,1.7094
+All,140,1755,dah sampai,3,1.7094
+All,140,1755,for instant,3,1.7094
+All,140,1755,hirup kuah,3,1.7094
+All,140,1755,instant noodles,3,1.7094
+All,140,1755,kari putih,3,1.7094
+All,140,1755,kuah santan,3,1.7094
+All,140,1755,mi sampai,3,1.7094
+All,140,1755,rasa dia,3,1.7094
+All,140,1755,rasa macam,3,1.7094
+All,140,1755,rasa pedas,3,1.7094
+All,140,1755,rich and,3,1.7094
+All,140,1755,soy sauce,3,1.7094
+All,140,1755,telur mata,3,1.7094
+Code-switched reviews,90,1186,dia memang,8,6.7454
+Code-switched reviews,90,1186,repeat order,6,5.059
+Code-switched reviews,90,1186,the spicy,5,4.2159
+Code-switched reviews,90,1186,rasa cheese,4,3.3727
+Code-switched reviews,90,1186,broth with,3,2.5295
+Code-switched reviews,90,1186,bubble wrap,3,2.5295
+Code-switched reviews,90,1186,curry broth,3,2.5295
+Code-switched reviews,90,1186,for instant,3,2.5295
+Code-switched reviews,90,1186,instant noodles,3,2.5295
+Code-switched reviews,90,1186,rasa dia,3,2.5295
+Code-switched reviews,90,1186,rasa macam,3,2.5295
+Code-switched reviews,90,1186,rich and,3,2.5295
+Code-switched reviews,90,1186,telur mata,3,2.5295
+Code-switched reviews,90,1186,after eating,2,1.6863
+Code-switched reviews,90,1186,and creamy,2,1.6863
+Code-switched reviews,90,1186,and spicy,2,1.6863
+Code-switched reviews,90,1186,and thick,2,1.6863
+Code-switched reviews,90,1186,banyak sangat,2,1.6863
+Code-switched reviews,90,1186,bau serai,2,1.6863
+Code-switched reviews,90,1186,bawang goreng,2,1.6863
+Code-switched reviews,90,1186,but still,2,1.6863
+Code-switched reviews,90,1186,but the,2,1.6863
+Code-switched reviews,90,1186,campur telur,2,1.6863
+Code-switched reviews,90,1186,carbonara dia,2,1.6863
+Code-switched reviews,90,1186,carbonara sauce,2,1.6863
 Self-Collected (Real),70,844,compared to,3,3.5545
 Self-Collected (Real),70,844,dia memang,3,3.5545
 Self-Collected (Real),70,844,repeat order,3,3.5545
+Self-Collected (Real),70,844,always my,2,2.3697
 Self-Collected (Real),70,844,and fast,2,2.3697
 Self-Collected (Real),70,844,and spicy,2,2.3697
 Self-Collected (Real),70,844,bau serai,2,2.3697
@@ -68,62 +69,61 @@ Self-Collected (Real),70,844,just nice,2,2.3697
 Self-Collected (Real),70,844,kari putih,2,2.3697
 Self-Collected (Real),70,844,kuah lodeh,2,2.3697
 Self-Collected (Real),70,844,masam dia,2,2.3697
-Self-Collected (Real),70,844,memang layan,2,2.3697
 Self-Collected (Real),70,844,mi sampai,2,2.3697
 Self-Collected (Real),70,844,paste dia,2,2.3697
 Self-Collected (Real),70,844,pedas melampau,2,2.3697
 Self-Collected (Real),70,844,pembungkusan sangat,2,2.3697
-Self-Collected (Real),70,844,pernah mengecewakan,2,2.3697
-AI-Generated (LLM),70,871,dia memang,5,5.7405
-AI-Generated (LLM),70,871,the spicy,4,4.5924
-AI-Generated (LLM),70,871,curry broth,3,3.4443
-AI-Generated (LLM),70,871,pekat dan,3,3.4443
-AI-Generated (LLM),70,871,rasa cheese,3,3.4443
-AI-Generated (LLM),70,871,repeat order,3,3.4443
-AI-Generated (LLM),70,871,sweet soy,3,3.4443
-AI-Generated (LLM),70,871,bawang goreng,2,2.2962
-AI-Generated (LLM),70,871,broth with,2,2.2962
-AI-Generated (LLM),70,871,bubble wrap,2,2.2962
-AI-Generated (LLM),70,871,but the,2,2.2962
-AI-Generated (LLM),70,871,carbonara sauce,2,2.2962
-AI-Generated (LLM),70,871,cheese seasoning,2,2.2962
-AI-Generated (LLM),70,871,creamy cheese,2,2.2962
-AI-Generated (LLM),70,871,curry soup,2,2.2962
-AI-Generated (LLM),70,871,dan sedap,2,2.2962
-AI-Generated (LLM),70,871,for instant,2,2.2962
-AI-Generated (LLM),70,871,fried shallots,2,2.2962
-AI-Generated (LLM),70,871,instant noodles,2,2.2962
-AI-Generated (LLM),70,871,kerenyahan bawang,2,2.2962
-AI-Generated (LLM),70,871,kuah santan,2,2.2962
-AI-Generated (LLM),70,871,memang padu,2,2.2962
-AI-Generated (LLM),70,871,mi hancur,2,2.2962
-AI-Generated (LLM),70,871,rasa masam,2,2.2962
-AI-Generated (LLM),70,871,rasa tak,2,2.2962
-All: Positive,110,1338,dia memang,8,5.9791
-All: Positive,110,1338,repeat order,6,4.4843
-All: Positive,110,1338,the spicy,5,3.7369
-All: Positive,110,1338,bawang goreng,4,2.9895
-All: Positive,110,1338,bubble wrap,4,2.9895
-All: Positive,110,1338,pekat dan,4,2.9895
-All: Positive,110,1338,rasa cheese,4,2.9895
-All: Positive,110,1338,sweet soy,4,2.9895
-All: Positive,110,1338,broth with,3,2.2422
-All: Positive,110,1338,curry broth,3,2.2422
-All: Positive,110,1338,hirup kuah,3,2.2422
-All: Positive,110,1338,kari putih,3,2.2422
-All: Positive,110,1338,kuah santan,3,2.2422
-All: Positive,110,1338,memang layan,3,2.2422
-All: Positive,110,1338,rasa macam,3,2.2422
-All: Positive,110,1338,rasa masam,3,2.2422
-All: Positive,110,1338,rich and,3,2.2422
-All: Positive,110,1338,soy sauce,3,2.2422
-All: Positive,110,1338,tak pernah,3,2.2422
-All: Positive,110,1338,telur mata,3,2.2422
-All: Positive,110,1338,agak sedikit,2,1.4948
-All: Positive,110,1338,and creamy,2,1.4948
-All: Positive,110,1338,and fast,2,1.4948
-All: Positive,110,1338,and spicy,2,1.4948
-All: Positive,110,1338,and thick,2,1.4948
+Self-Collected (Real),70,844,rasa dia,2,2.3697
+AI-Generated (LLM),70,911,dia memang,5,5.4885
+AI-Generated (LLM),70,911,the spicy,4,4.3908
+AI-Generated (LLM),70,911,curry broth,3,3.2931
+AI-Generated (LLM),70,911,pekat dan,3,3.2931
+AI-Generated (LLM),70,911,rasa cheese,3,3.2931
+AI-Generated (LLM),70,911,repeat order,3,3.2931
+AI-Generated (LLM),70,911,sweet soy,3,3.2931
+AI-Generated (LLM),70,911,bawang goreng,2,2.1954
+AI-Generated (LLM),70,911,broth with,2,2.1954
+AI-Generated (LLM),70,911,bubble wrap,2,2.1954
+AI-Generated (LLM),70,911,but the,2,2.1954
+AI-Generated (LLM),70,911,carbonara sauce,2,2.1954
+AI-Generated (LLM),70,911,cheese seasoning,2,2.1954
+AI-Generated (LLM),70,911,creamy cheese,2,2.1954
+AI-Generated (LLM),70,911,curry soup,2,2.1954
+AI-Generated (LLM),70,911,dah sampai,2,2.1954
+AI-Generated (LLM),70,911,dan sedap,2,2.1954
+AI-Generated (LLM),70,911,for instant,2,2.1954
+AI-Generated (LLM),70,911,fried shallots,2,2.1954
+AI-Generated (LLM),70,911,instant noodles,2,2.1954
+AI-Generated (LLM),70,911,kerenyahan bawang,2,2.1954
+AI-Generated (LLM),70,911,kuah santan,2,2.1954
+AI-Generated (LLM),70,911,memang padu,2,2.1954
+AI-Generated (LLM),70,911,memang puas,2,2.1954
+AI-Generated (LLM),70,911,mi hancur,2,2.1954
+All: Positive,110,1378,dia memang,8,5.8055
+All: Positive,110,1378,repeat order,6,4.3541
+All: Positive,110,1378,the spicy,5,3.6284
+All: Positive,110,1378,bawang goreng,4,2.9028
+All: Positive,110,1378,bubble wrap,4,2.9028
+All: Positive,110,1378,pekat dan,4,2.9028
+All: Positive,110,1378,rasa cheese,4,2.9028
+All: Positive,110,1378,sweet soy,4,2.9028
+All: Positive,110,1378,broth with,3,2.1771
+All: Positive,110,1378,curry broth,3,2.1771
+All: Positive,110,1378,dah sampai,3,2.1771
+All: Positive,110,1378,hirup kuah,3,2.1771
+All: Positive,110,1378,kari putih,3,2.1771
+All: Positive,110,1378,kuah santan,3,2.1771
+All: Positive,110,1378,rasa macam,3,2.1771
+All: Positive,110,1378,rasa masam,3,2.1771
+All: Positive,110,1378,rich and,3,2.1771
+All: Positive,110,1378,soy sauce,3,2.1771
+All: Positive,110,1378,telur mata,3,2.1771
+All: Positive,110,1378,agak sedikit,2,1.4514
+All: Positive,110,1378,always my,2,1.4514
+All: Positive,110,1378,and creamy,2,1.4514
+All: Positive,110,1378,and fast,2,1.4514
+All: Positive,110,1378,and spicy,2,1.4514
+All: Positive,110,1378,and thick,2,1.4514
 All: Neutral,10,135,compared to,3,22.2222
 All: Neutral,10,135,but slightly,2,14.8148
 All: Neutral,10,135,kenyal tapi,2,14.8148
@@ -176,6 +176,7 @@ All: Negative,20,242,any redeeming,1,4.1322
 All: Negative,20,242,any sweet,1,4.1322
 Self-Collected (Real): Positive,55,660,dia memang,3,4.5455
 Self-Collected (Real): Positive,55,660,repeat order,3,4.5455
+Self-Collected (Real): Positive,55,660,always my,2,3.0303
 Self-Collected (Real): Positive,55,660,and fast,2,3.0303
 Self-Collected (Real): Positive,55,660,and spicy,2,3.0303
 Self-Collected (Real): Positive,55,660,bawang goreng,2,3.0303
@@ -188,17 +189,16 @@ Self-Collected (Real): Positive,55,660,is super,2,3.0303
 Self-Collected (Real): Positive,55,660,just nice,2,3.0303
 Self-Collected (Real): Positive,55,660,kari putih,2,3.0303
 Self-Collected (Real): Positive,55,660,kuah lodeh,2,3.0303
-Self-Collected (Real): Positive,55,660,memang layan,2,3.0303
 Self-Collected (Real): Positive,55,660,paste dia,2,3.0303
-Self-Collected (Real): Positive,55,660,pernah mengecewakan,2,3.0303
 Self-Collected (Real): Positive,55,660,rasa kari,2,3.0303
 Self-Collected (Real): Positive,55,660,rasa macam,2,3.0303
 Self-Collected (Real): Positive,55,660,sedap giler,2,3.0303
 Self-Collected (Real): Positive,55,660,sesuai untuk,2,3.0303
-Self-Collected (Real): Positive,55,660,tak pernah,2,3.0303
 Self-Collected (Real): Positive,55,660,the price,2,3.0303
 Self-Collected (Real): Positive,55,660,2x tanpa,1,1.5152
 Self-Collected (Real): Positive,55,660,5 pack,1,1.5152
+Self-Collected (Real): Positive,55,660,5 star,1,1.5152
+Self-Collected (Real): Positive,55,660,ada dua,1,1.5152
 Self-Collected (Real): Neutral,5,65,compared to,2,30.7692
 Self-Collected (Real): Neutral,5,65,after two,1,15.3846
 Self-Collected (Real): Neutral,5,65,agak pelik,1,15.3846
@@ -249,31 +249,31 @@ Self-Collected (Real): Negative,10,119,clump together,1,8.4034
 Self-Collected (Real): Negative,10,119,crushed inside,1,8.4034
 Self-Collected (Real): Negative,10,119,dalam keadaan,1,8.4034
 Self-Collected (Real): Negative,10,119,dalam paket,1,8.4034
-AI-Generated (LLM): Positive,55,678,dia memang,5,7.3746
-AI-Generated (LLM): Positive,55,678,the spicy,4,5.8997
-AI-Generated (LLM): Positive,55,678,curry broth,3,4.4248
-AI-Generated (LLM): Positive,55,678,pekat dan,3,4.4248
-AI-Generated (LLM): Positive,55,678,rasa cheese,3,4.4248
-AI-Generated (LLM): Positive,55,678,repeat order,3,4.4248
-AI-Generated (LLM): Positive,55,678,sweet soy,3,4.4248
-AI-Generated (LLM): Positive,55,678,bawang goreng,2,2.9499
-AI-Generated (LLM): Positive,55,678,broth with,2,2.9499
-AI-Generated (LLM): Positive,55,678,bubble wrap,2,2.9499
-AI-Generated (LLM): Positive,55,678,carbonara sauce,2,2.9499
-AI-Generated (LLM): Positive,55,678,cheese seasoning,2,2.9499
-AI-Generated (LLM): Positive,55,678,creamy cheese,2,2.9499
-AI-Generated (LLM): Positive,55,678,curry soup,2,2.9499
-AI-Generated (LLM): Positive,55,678,dan sedap,2,2.9499
-AI-Generated (LLM): Positive,55,678,fried shallots,2,2.9499
-AI-Generated (LLM): Positive,55,678,kerenyahan bawang,2,2.9499
-AI-Generated (LLM): Positive,55,678,kuah santan,2,2.9499
-AI-Generated (LLM): Positive,55,678,rasa masam,2,2.9499
-AI-Generated (LLM): Positive,55,678,rasa tak,2,2.9499
-AI-Generated (LLM): Positive,55,678,rich and,2,2.9499
-AI-Generated (LLM): Positive,55,678,sebiji macam,2,2.9499
-AI-Generated (LLM): Positive,55,678,sedap dinikmati,2,2.9499
-AI-Generated (LLM): Positive,55,678,soy sauce,2,2.9499
-AI-Generated (LLM): Positive,55,678,tekstur mee,2,2.9499
+AI-Generated (LLM): Positive,55,718,dia memang,5,6.9638
+AI-Generated (LLM): Positive,55,718,the spicy,4,5.571
+AI-Generated (LLM): Positive,55,718,curry broth,3,4.1783
+AI-Generated (LLM): Positive,55,718,pekat dan,3,4.1783
+AI-Generated (LLM): Positive,55,718,rasa cheese,3,4.1783
+AI-Generated (LLM): Positive,55,718,repeat order,3,4.1783
+AI-Generated (LLM): Positive,55,718,sweet soy,3,4.1783
+AI-Generated (LLM): Positive,55,718,bawang goreng,2,2.7855
+AI-Generated (LLM): Positive,55,718,broth with,2,2.7855
+AI-Generated (LLM): Positive,55,718,bubble wrap,2,2.7855
+AI-Generated (LLM): Positive,55,718,carbonara sauce,2,2.7855
+AI-Generated (LLM): Positive,55,718,cheese seasoning,2,2.7855
+AI-Generated (LLM): Positive,55,718,creamy cheese,2,2.7855
+AI-Generated (LLM): Positive,55,718,curry soup,2,2.7855
+AI-Generated (LLM): Positive,55,718,dah sampai,2,2.7855
+AI-Generated (LLM): Positive,55,718,dan sedap,2,2.7855
+AI-Generated (LLM): Positive,55,718,fried shallots,2,2.7855
+AI-Generated (LLM): Positive,55,718,kerenyahan bawang,2,2.7855
+AI-Generated (LLM): Positive,55,718,kuah santan,2,2.7855
+AI-Generated (LLM): Positive,55,718,memang puas,2,2.7855
+AI-Generated (LLM): Positive,55,718,mi ini,2,2.7855
+AI-Generated (LLM): Positive,55,718,puas hati,2,2.7855
+AI-Generated (LLM): Positive,55,718,rasa masam,2,2.7855
+AI-Generated (LLM): Positive,55,718,rasa tak,2,2.7855
+AI-Generated (LLM): Positive,55,718,rich and,2,2.7855
 AI-Generated (LLM): Neutral,5,70,2 minutes,1,14.2857
 AI-Generated (LLM): Neutral,5,70,a bit,1,14.2857
 AI-Generated (LLM): Neutral,5,70,acceptable sour,1,14.2857

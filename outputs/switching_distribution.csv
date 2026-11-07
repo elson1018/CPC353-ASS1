@@ -3,11 +3,11 @@ All,Intra-sentential,56,90,62.22
 All,Inter-sentential,21,90,23.33
 All,Tag Switching,13,90,14.44
 All,N/A,0,90,0.0
-Self-Collected (Real),Intra-sentential,28,44,63.64
-Self-Collected (Real),Inter-sentential,10,44,22.73
+Self-Collected (Real),Intra-sentential,27,44,61.36
+Self-Collected (Real),Inter-sentential,11,44,25.0
 Self-Collected (Real),Tag Switching,6,44,13.64
 Self-Collected (Real),N/A,0,44,0.0
-AI-Generated (LLM),Intra-sentential,28,46,60.87
-AI-Generated (LLM),Inter-sentential,11,46,23.91
+AI-Generated (LLM),Intra-sentential,29,46,63.04
+AI-Generated (LLM),Inter-sentential,10,46,21.74
 AI-Generated (LLM),Tag Switching,7,46,15.22
 AI-Generated (LLM),N/A,0,46,0.0
