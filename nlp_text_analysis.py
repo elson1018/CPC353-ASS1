@@ -180,6 +180,36 @@ def ranked_ngrams(reviews, label, limit=25):
             for gram, count in sorted(counts.items(), key=lambda item: (-item[1], item[0]))[:limit]]
 
 
+REPORT_BIGRAMS = ("dia memang", "repeat order", "rasa cheese")
+REPORT_COMPARISON_FIELDS = ["Ngram", "RealReviews", "RealEligiblePositions", "RealCount",
+                            "RealPer1000", "AIReviews", "AIEligiblePositions", "AICount", "AIPer1000"]
+
+
+def report_origin_comparison(reviews):
+    """Reproduce the report's selected phrases using only mixed reviews per origin.
+
+    These fixed illustrative phrases are not an automatic top-three ranking.
+    Include absent phrases as zero counts; leave rates blank for empty denominators.
+    """
+    groups = {}
+    for origin in (REAL, AI):
+        subset = [r for r in reviews if r["DataOrigin"] == origin
+                  and r["LanguageClassification"] == "Code-switched"]
+        counts, denominator = ngram_statistics(subset)
+        groups[origin] = (len(subset), counts, denominator)
+    rows = []
+    for phrase in REPORT_BIGRAMS:
+        row = {"Ngram": phrase}
+        for origin, prefix in ((REAL, "Real"), (AI, "AI")):
+            size, counts, denominator = groups[origin]
+            row.update({prefix + "Reviews": size, prefix + "EligiblePositions": denominator,
+                        prefix + "Count": counts[phrase],
+                        prefix + "Per1000": round(counts[phrase] / denominator * 1000, 2)
+                        if denominator else ""})
+        rows.append(row)
+    return rows
+
+
 LEXICON_ENTRIES = [
         {"Term": "Sedap giler / gila", "StandardMalay": "Sangat lazat", "EnglishEquivalent": "Crazy delicious", "POS": "Adj + Intensifier", "Function": "Emotional emphasis on flavor", "Polarity": "Positive"},
         {"Term": "Padu / Padu giler", "StandardMalay": "Mantap / berkualiti tinggi", "EnglishEquivalent": "Solid / Top-notch", "POS": "Adjective", "Function": "Expressing rich texture/taste", "Polarity": "Positive"},
@@ -263,10 +293,15 @@ def run(input_path, output_dir):
     write_csv(output_dir / "switching_distribution.csv", ["Group", "SwitchingType", "Count", "CodeSwitchedReviews", "Percent"], switch_rows)
     groups = [("All", reviews), ("Code-switched reviews", [r for r in reviews if r["LanguageClassification"] == "Code-switched"]),
               (REAL, real), (AI, ai)]
+    for origin, subset in ((REAL, real), (AI, ai)):
+        groups.append((origin + ": Code-switched", [r for r in subset
+                       if r["LanguageClassification"] == "Code-switched"]))
     for label, subset in [("All", reviews), (REAL, real), (AI, ai)]:
         for sentiment, ratings in [("Positive", {"4", "5"}), ("Neutral", {"3"}), ("Negative", {"1", "2"})]:
             groups.append((label + ": " + sentiment, [r for r in subset if r["Rating"] in ratings]))
     write_csv(output_dir / "top_bigrams.csv", NGRAM_FIELDS, [row for label, subset in groups for row in ranked_ngrams(subset, label)])
+    write_csv(output_dir / "report_table_iv.csv", REPORT_COMPARISON_FIELDS,
+              report_origin_comparison(reviews))
     lexicon = curated_lexicon(reviews)
     write_csv(output_dir / "bilingual_lexicon.csv", list(lexicon[0]), lexicon)
     print(f"Collected {cleaning['collected']}; retained {len(reviews)}; invalid {cleaning['rejected_invalid']}; duplicates {cleaning['removed_duplicate_texts']}.")

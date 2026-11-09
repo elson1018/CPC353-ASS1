@@ -70,6 +70,26 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(particles['ObservedVariants'], 'kan')
         self.assertEqual(particles['ReviewCount'], 1)
 
+    def test_report_comparison_uses_mixed_reviews_and_full_denominators(self):
+        reviews = [record(ReviewText='Repeat order. Nice taste.'),
+                   record(ReviewID='REV-002', ReviewText='Repeat order. Repeat order.',
+                          LanguageClassification='English', CodeSwitchingType='N/A'),
+                   record(ReviewID='REV-AI-001', DataOrigin=pipeline.AI,
+                          ReviewText='Repeat order. Nice taste. Great noodles.')]
+        row = next(r for r in pipeline.report_origin_comparison(reviews)
+                   if r['Ngram'] == 'repeat order')
+        self.assertEqual((row['RealReviews'], row['RealEligiblePositions'], row['RealCount']), (1, 2, 1))
+        self.assertEqual((row['AIReviews'], row['AIEligiblePositions'], row['AICount']), (1, 3, 1))
+        self.assertEqual(row['RealPer1000'], 500)
+        self.assertEqual(row['AIPer1000'], 333.33)
+        absent = next(r for r in pipeline.report_origin_comparison(reviews) if r['Ngram'] == 'rasa cheese')
+        self.assertEqual((absent['RealCount'], absent['RealPer1000']), (0, 0))
+
+    def test_report_comparison_empty_group_rate_is_undefined(self):
+        for row in pipeline.report_origin_comparison([]):
+            self.assertEqual((row['RealCount'], row['AICount']), (0, 0))
+            self.assertEqual((row['RealPer1000'], row['AIPer1000']), ('', ''))
+
 
 if __name__ == '__main__':
     unittest.main()
