@@ -21,12 +21,13 @@ KEYWORDS = ("sedap", "pedas", "kuah", "worth", "packaging", "repeat", "padu", "h
 BILINGUAL_STOPWORDS = set("""the and is in to of it for with on at by from this that my so all
  dan yang di ke ini itu untuk dengan pada dari oleh adalah iaitu dalam pun lah je kan tu dia ni
  dah ada tak tidak nak akan sangat amat""".split())
-TOKEN = re.compile(r"[^\W_]+(?:[-'’][^\W_]+)*", re.UNICODE)
+TOKEN = re.compile(r"(?:rm)?\d+\.\d+|[^\W_]+(?:[-'’][^\W_]+)*", re.UNICODE | re.IGNORECASE)
+SENTENCE_BOUNDARY = re.compile(r"[!?…\r\n]+|(?<!\d)\.|\.(?!\d)")
 KWIC_FIELDS = ["ReviewID", "DataOrigin", "Keyword", "LeftContext", "RightContext",
                "LanguageClassification", "CodeSwitchingType", "Rating", "FullText"]
 ISSUE_FIELDS = ["ReviewID", "Severity", "Issue", "Detail"]
 NGRAM_FIELDS = ["Group", "Reviews", "EligibleNgramPositions", "Ngram", "Frequency",
-                "Per1000EligiblePositions"]
+                "Per1000EligiblePositions", "DistinctReviews", "ReviewIDs"]
 
 
 def clean_and_tokenize(text):
@@ -35,8 +36,11 @@ def clean_and_tokenize(text):
 
 
 def sentences(text):
-    """Heuristic boundaries: . ! ? … and newlines; not a trained sentence model."""
-    return [s for s in re.split(r"[.!?…\r\n]+", text) if s.strip()]
+    """Keep dots between digits; other . ! ? … and newlines are boundaries.
+
+    Abbreviations and unpunctuated text still require contextual review.
+    """
+    return [s for s in SENTENCE_BOUNDARY.split(text) if s.strip()]
 
 
 def write_csv(path, fields, rows):
@@ -152,10 +156,11 @@ def extract_concordances(reviews, window_size=4):
     return out
 
 
-def ngram_statistics(reviews, n=2, filter_stopwords=True):
+def ngram_evidence(reviews, n=2, filter_stopwords=True):
     if n < 1:
         raise ValueError("n must be positive")
     counts = Counter()
+    review_ids = {}
     for r in reviews:
         for sentence in sentences(r["ReviewText"]):
             tokens = clean_and_tokenize(sentence)
@@ -164,8 +169,15 @@ def ngram_statistics(reviews, n=2, filter_stopwords=True):
                 # Skip all-stopword spans without deleting tokens or creating adjacency.
                 if filter_stopwords and all(w in BILINGUAL_STOPWORDS for w in gram):
                     continue
-                counts[" ".join(gram)] += 1
-    return counts, sum(counts.values())
+                phrase = " ".join(gram)
+                counts[phrase] += 1
+                review_ids.setdefault(phrase, set()).add(r["ReviewID"])
+    return counts, review_ids, sum(counts.values())
+
+
+def ngram_statistics(reviews, n=2, filter_stopwords=True):
+    counts, _, denominator = ngram_evidence(reviews, n, filter_stopwords)
+    return counts, denominator
 
 
 def extract_ngrams(reviews, n=2, filter_stopwords=True):
@@ -173,16 +185,18 @@ def extract_ngrams(reviews, n=2, filter_stopwords=True):
 
 
 def ranked_ngrams(reviews, label, limit=25):
-    counts, denominator = ngram_statistics(reviews)
+    counts, ids, denominator = ngram_evidence(reviews)
     return [{"Group": label, "Reviews": len(reviews), "EligibleNgramPositions": denominator,
              "Ngram": gram, "Frequency": count,
-             "Per1000EligiblePositions": round(count / denominator * 1000, 4)}
+             "Per1000EligiblePositions": round(count / denominator * 1000, 4),
+             "DistinctReviews": len(ids[gram]), "ReviewIDs": "; ".join(sorted(ids[gram]))}
             for gram, count in sorted(counts.items(), key=lambda item: (-item[1], item[0]))[:limit]]
 
 
 REPORT_BIGRAMS = ("dia memang", "repeat order", "rasa cheese")
 REPORT_COMPARISON_FIELDS = ["Ngram", "RealReviews", "RealEligiblePositions", "RealCount",
-                            "RealPer1000", "AIReviews", "AIEligiblePositions", "AICount", "AIPer1000"]
+                            "RealPer1000", "AIReviews", "AIEligiblePositions", "AICount", "AIPer1000",
+                            "RealDistinctReviews", "RealReviewIDs", "AIDistinctReviews", "AIReviewIDs"]
 
 
 def report_origin_comparison(reviews):
@@ -195,18 +209,48 @@ def report_origin_comparison(reviews):
     for origin in (REAL, AI):
         subset = [r for r in reviews if r["DataOrigin"] == origin
                   and r["LanguageClassification"] == "Code-switched"]
-        counts, denominator = ngram_statistics(subset)
-        groups[origin] = (len(subset), counts, denominator)
+        counts, ids, denominator = ngram_evidence(subset)
+        groups[origin] = (len(subset), counts, ids, denominator)
     rows = []
     for phrase in REPORT_BIGRAMS:
         row = {"Ngram": phrase}
         for origin, prefix in ((REAL, "Real"), (AI, "AI")):
-            size, counts, denominator = groups[origin]
+            size, counts, ids, denominator = groups[origin]
             row.update({prefix + "Reviews": size, prefix + "EligiblePositions": denominator,
                         prefix + "Count": counts[phrase],
                         prefix + "Per1000": round(counts[phrase] / denominator * 1000, 2)
-                        if denominator else ""})
+                        if denominator else "", prefix + "DistinctReviews": len(ids.get(phrase, set())),
+                        prefix + "ReviewIDs": "; ".join(sorted(ids.get(phrase, set())))})
         rows.append(row)
+    return rows
+
+
+SPELLING_FIELDS = ["DataOrigin", "Family", "ObservedForm", "Occurrences", "DistinctReviews", "ReviewIDs"]
+SPELLING_PATTERNS = {"gila/giler": re.compile(r"(?:gila|giler)"),
+                     "sedap repeated-final-p": re.compile(r"sedap+")}
+
+
+def spelling_variants(reviews):
+    """Supplementary exact-token comparison in mixed reviews; no normalization.
+
+    The gila/giler grouping is a manual lexical choice. The sedap pattern covers
+    only repeated final p, not every spelling or morphological variant.
+    """
+    rows = []
+    for origin in (REAL, AI):
+        for family, pattern in SPELLING_PATTERNS.items():
+            counts, ids = Counter(), {}
+            for r in reviews:
+                if r["DataOrigin"] != origin or r["LanguageClassification"] != "Code-switched":
+                    continue
+                for token in clean_and_tokenize(r["ReviewText"]):
+                    if pattern.fullmatch(token):
+                        counts[token] += 1
+                        ids.setdefault(token, set()).add(r["ReviewID"])
+            for form, count in sorted(counts.items(), key=lambda item: (-item[1], item[0])):
+                rows.append({"DataOrigin": origin, "Family": family, "ObservedForm": form,
+                             "Occurrences": count, "DistinctReviews": len(ids[form]),
+                             "ReviewIDs": "; ".join(sorted(ids[form]))})
     return rows
 
 
@@ -268,7 +312,7 @@ def run(input_path, output_dir):
         "manual_review_flags": sum(i["Severity"] == "review" for i in issues),
         "provenance_verified": False,
         "method": {"unit": "complete review; n-grams and KWIC bounded by heuristic sentences",
-            "sentence_boundaries": ". ! ? … and newlines", "normalization": "lowercase; retain hyphens, apostrophes and single-character tokens",
+            "sentence_boundaries": ". ! ? … and newlines, except dots between digits", "normalization": "lowercase; retain decimal numbers/prices, hyphens, apostrophes and single-character tokens",
             "stopwords": "discard only n-grams whose tokens are all stopwords",
             "frequency_denominator": "all eligible bigram occurrences in the group before top-25 selection",
             "labels": "original annotations; not automatically validated linguistically",
@@ -302,6 +346,7 @@ def run(input_path, output_dir):
     write_csv(output_dir / "top_bigrams.csv", NGRAM_FIELDS, [row for label, subset in groups for row in ranked_ngrams(subset, label)])
     write_csv(output_dir / "report_table_iv.csv", REPORT_COMPARISON_FIELDS,
               report_origin_comparison(reviews))
+    write_csv(output_dir / "spelling_variants.csv", SPELLING_FIELDS, spelling_variants(reviews))
     lexicon = curated_lexicon(reviews)
     write_csv(output_dir / "bilingual_lexicon.csv", list(lexicon[0]), lexicon)
     print(f"Collected {cleaning['collected']}; retained {len(reviews)}; invalid {cleaning['rejected_invalid']}; duplicates {cleaning['removed_duplicate_texts']}.")

@@ -26,8 +26,8 @@
   "provenance_verified": false,
   "method": {
     "unit": "complete review; n-grams and KWIC bounded by heuristic sentences",
-    "sentence_boundaries": ". ! ? … and newlines",
-    "normalization": "lowercase; retain hyphens, apostrophes and single-character tokens",
+    "sentence_boundaries": ". ! ? … and newlines, except dots between digits",
+    "normalization": "lowercase; retain decimal numbers/prices, hyphens, apostrophes and single-character tokens",
     "stopwords": "discard only n-grams whose tokens are all stopwords",
     "frequency_denominator": "all eligible bigram occurrences in the group before top-25 selection",
     "labels": "original annotations; not automatically validated linguistically",

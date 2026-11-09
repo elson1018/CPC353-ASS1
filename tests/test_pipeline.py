@@ -90,6 +90,36 @@ class PipelineTests(unittest.TestCase):
             self.assertEqual((row['RealCount'], row['AICount']), (0, 0))
             self.assertEqual((row['RealPer1000'], row['AIPer1000']), ('', ''))
 
+    def test_decimal_price_stays_one_token_without_joining_sentences(self):
+        text = 'Worth RM13.90. Sedap! Price 5.50 only.'
+        self.assertEqual(len(pipeline.sentences(text)), 3)
+        self.assertEqual(pipeline.clean_and_tokenize('RM13.90 and 5.50'), ['rm13.90', 'and', '5.50'])
+        counts = pipeline.extract_ngrams([record(ReviewText=text)])
+        self.assertEqual(counts['worth rm13.90'], 1)
+        self.assertNotIn('rm13.90 sedap', counts)
+        hit = pipeline.extract_concordances([record(ReviewText='Sedap for RM13.90.')])[0]
+        self.assertEqual(hit['RightContext'], 'for RM13.90')
+
+    def test_occurrences_differ_from_distinct_reviews(self):
+        reviews = [record(ReviewText='Repeat order repeat order.'),
+                   record(ReviewID='REV-002', ReviewText='Repeat order.')]
+        row = next(r for r in pipeline.ranked_ngrams(reviews, 'Test') if r['Ngram'] == 'repeat order')
+        self.assertEqual((row['Frequency'], row['DistinctReviews']), (3, 2))
+        self.assertEqual(row['ReviewIDs'], 'REV-001; REV-002')
+        report = next(r for r in pipeline.report_origin_comparison(reviews) if r['Ngram'] == 'repeat order')
+        self.assertEqual((report['RealCount'], report['RealDistinctReviews']), (3, 2))
+
+    def test_spelling_variants_are_token_bounded_and_mixed_only(self):
+        reviews = [record(ReviewText='Gila gila giler sedap sedappp sedapkan.'),
+                   record(ReviewID='REV-002', LanguageClassification='Malay', ReviewText='Gila sedapppp.')]
+        before = reviews[0]['ReviewText']
+        rows = pipeline.spelling_variants(reviews)
+        forms = {r['ObservedForm']: r for r in rows}
+        self.assertEqual(set(forms), {'gila', 'giler', 'sedap', 'sedappp'})
+        self.assertEqual((forms['gila']['Occurrences'], forms['gila']['DistinctReviews']), (2, 1))
+        self.assertEqual(reviews[0]['ReviewText'], before)
+        self.assertEqual(pipeline.spelling_variants([]), [])
+
 
 if __name__ == '__main__':
     unittest.main()

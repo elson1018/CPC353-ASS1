@@ -31,21 +31,40 @@ The script reads the CSV with UTF-8 BOM support. Input files and original annota
 | language_distribution.csv | Language counts by origin and percentage of all retained reviews |
 | switching_distribution.csv | Original switching labels among code-switched reviews, separated by origin |
 | concordance_results.csv | Selected keyword hits with up to four tokens of context on each side |
-| top_bigrams.csv | Top 25 bigrams per group, including each origin’s code-switched subset, with counts and normalized frequencies |
-| report_table_iv.csv | Direct reproduction of the report’s selected mixed-review phrases, with counts, denominators and rates by origin |
+| top_bigrams.csv | Top 25 bigrams per group, with occurrence counts, distinct-review counts, supporting IDs and normalized frequencies |
+| report_table_iv.csv | Selected mixed-review phrases with counts, distinct reviews, IDs, denominators and rates by origin |
+| spelling_variants.csv | Separate observed forms for manual gila/giler and repeated-final-p sedap families in mixed reviews |
 | bilingual_lexicon.csv | Manually curated glosses with matching review IDs and unobserved variants |
 
 ## Method
 
-The complete review is the dataset unit. Heuristic sentence boundaries are `. ! ? …` and newlines. KWIC and bigrams do not cross these boundaries. This simple splitter may mishandle decimals and abbreviations; inspect examples before quoting them.
+The complete review is the dataset unit. Heuristic sentence boundaries are `. ! ? …` and newlines, except a dot between digits. KWIC and bigrams do not cross these boundaries. Decimal values such as `13.90` and `RM13.90` remain single tokens. Abbreviations, date-like numeric strings and missing punctuation can still be ambiguous; inspect examples before quoting them.
 
-Tokens are lowercase Unicode words/numbers; hyphens, apostrophes and single-character tokens are retained. Original review text is preserved. All-stopword bigrams are excluded; stopwords are never deleted to create artificial adjacency. Discourse particles and negation remain available for KWIC and manual interpretation. These are descriptive frequency counts, not statistically scored collocations.
+Tokens are lowercase Unicode words/numbers, including decimal prices; hyphens, apostrophes and single-character tokens are retained. Original review text is preserved. All-stopword bigrams are excluded; stopwords are never deleted to create artificial adjacency. Discourse particles and negation remain available for KWIC and manual interpretation. These are descriptive frequency counts, not statistically scored collocations.
 
 Ties sort alphabetically. Each normalized frequency is occurrences per 1,000 eligible bigram positions within that group, calculated before top-25 selection. Empty groups produce no bigram rows. Zero-count groups remain visible in distribution tables.
 
 Ratings are a sentiment proxy: 4–5 positive, 3 neutral, 1–2 negative. Bigram comparisons are exported overall, by origin, by code-switched subset within each origin, and by rating group within each origin. Table IV uses only code-switched reviews in both origin groups; its fixed illustrative phrases are not an automatic top-three selection. AI examples depend on real-labelled seeds, so they cannot be treated as independent evidence of human behaviour. Bigrams from code-switched reviews are not necessarily cross-language bigrams; token-level language annotation would be needed to make that claim.
 
 Validation rejects missing required fields, invalid categories/ratings/dates, malformed CSV rows, and duplicate IDs. Case/whitespace-normalized duplicate texts retain the first valid record. Invalid records trigger a nonzero exit after diagnostic exports; missing columns stop analysis. The current schema treats metadata fields as required; genuinely unavailable metadata should be documented and the validation policy deliberately revised rather than invented.
+
+## Frequency evidence and spelling comparison
+
+`Frequency` counts all occurrences; `DistinctReviews` counts each supporting review ID once, even if a phrase repeats. `ReviewIDs` provides a deterministic trace to the original text. Rates continue to use eligible occurrence positions, not distinct reviews. Ranking and stopword rules are unchanged.
+
+The supplementary spelling comparison uses only code-switched reviews, separated by origin. It keeps `gila` and `giler` as separate observed forms within a manually chosen family, and matches `sedap`, `sedapp`, `sedappp`, etc. only as complete tokens. It does not match every possible spelling, infer equivalent meanings in every context, change the corpus, or expand the KWIC keyword list. A form absent from the export was not observed under these specific rules.
+
+## Optional report chart
+
+The core pipeline remains standard-library-only. To create the chart, install ReportLab in your Python environment if needed, then run:
+
+```bash
+python3 -m pip install reportlab
+python3 nlp_text_analysis.py
+python3 plot_results.py
+```
+
+`plot_results.py` reads current `switching_distribution.csv` and writes `switching_by_origin.pdf` and `.svg`. If Poppler's `pdftoppm` is available on PATH, it also creates `.png` for Google Docs. The figure compares current primary-label percentages among code-switched reviews only; it does not infer annotation accuracy or independent synthetic behaviour. The plotted percentages are calculated from counts and group sizes. Use `--output-dir` on both scripts for custom output folders.
 
 ## Manual checks before reporting
 

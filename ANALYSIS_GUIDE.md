@@ -56,3 +56,11 @@ Run `python3 nlp_text_analysis.py`. The new `outputs/report_table_iv.csv` direct
 The current mixed subsets contain 44 real-labelled reviews with 559 eligible positions and 46 AI reviews with 627. `repeat order` occurs three times in each group: 3 / 559 * 1000 = 5.37 and 3 / 627 * 1000 = 4.78. The same raw count can therefore have different normalized rates. Empty-denominator groups have a blank rate rather than an invented zero.
 
 The `top_bigrams.csv` export also includes each origin's code-switched subset, allowing exploration beyond the three selected phrases. Neither export changes the original labels or the keyword selection policy.
+
+## New supporting outputs
+
+Bigram exports now include distinct-review counts and supporting IDs alongside occurrences. Repetition inside a review increases frequency but not the distinct-review count. The comparison file includes this evidence separately for each origin.
+
+`spelling_variants.csv` compares exact `gila`/`giler` tokens and repeated-final-p forms of `sedap` in code-switched reviews only. These are supplementary manual families; primary counts and original text remain separate and unchanged. Do not claim that an unobserved spelling occurred. Decimal punctuation between digits is now protected during segmentation and tokenization.
+
+Run `python3 plot_results.py` after the pipeline for the optional switching-type chart. ReportLab is required; Poppler additionally creates its PNG version. The chart describes supplied labels, not independently validated switching events.

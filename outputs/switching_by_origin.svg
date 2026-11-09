@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="250" height="215" preserveAspectRatio="xMinYMin meet" viewBox="0 0 250 215" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="250" height="215"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-215)" style="clip-path: url(#clip)">
+		<g transform="">
+			<text x="58.37299999999999" y="200" style="font-family: Helvetica-Bold; font-size: 11px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,400) scale(1,-1)">Switching types by origin</text>
+			<text x="42.092" y="186" style="font-family: Helvetica; font-size: 8px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,372) scale(1,-1)">Code-switched reviews; existing primary labels</text>
+			<g transform="">
+				<g transform="">
+					<rect x="80.0" y="53.67741935483871" width="94.5" height="10.322580645161288" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0; fill: rgb(14%,29%,44%); fill-rule: evenodd;"/>
+					<rect x="80.0" y="93.6774193548387" width="38.5" height="10.322580645161295" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0; fill: rgb(14%,29%,44%); fill-rule: evenodd;"/>
+					<rect x="80.0" y="133.67741935483872" width="21.0" height="10.322580645161281" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0; fill: rgb(14%,29%,44%); fill-rule: evenodd;"/>
+					<rect x="80.0" y="64.0" width="97.08695652173913" height="10.322580645161295" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0; fill: rgb(25%,50%,47%); fill-rule: evenodd;"/>
+					<rect x="80.0" y="104.0" width="33.47826086956522" height="10.322580645161295" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0; fill: rgb(25%,50%,47%); fill-rule: evenodd;"/>
+					<rect x="80.0" y="144.0" width="23.434782608695656" height="10.322580645161281" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0; fill: rgb(25%,50%,47%); fill-rule: evenodd;"/>
+					<g transform="">
+						<g transform=" matrix(1,0,0,1,177.5,58.83871)">
+							<text x="0.0" y="-2.8000000000000007" style="font-family: Helvetica; font-size: 7px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-5) scale(1,-1)">61.4%</text>
+						</g>
+						<g transform=" matrix(1,0,0,1,121.5,98.83871)">
+							<text x="0.0" y="-2.8000000000000007" style="font-family: Helvetica; font-size: 7px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-5) scale(1,-1)">25.0%</text>
+						</g>
+						<g transform=" matrix(1,0,0,1,104,138.83871)">
+							<text x="0.0" y="-2.8000000000000007" style="font-family: Helvetica; font-size: 7px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-5) scale(1,-1)">13.6%</text>
+						</g>
+						<g transform=" matrix(1,0,0,1,180.086957,69.16129)">
+							<text x="0.0" y="-2.8000000000000007" style="font-family: Helvetica; font-size: 7px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-5) scale(1,-1)">63.0%</text>
+						</g>
+						<g transform=" matrix(1,0,0,1,116.478261,109.16129)">
+							<text x="0.0" y="-2.8000000000000007" style="font-family: Helvetica; font-size: 7px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-5) scale(1,-1)">21.7%</text>
+						</g>
+						<g transform=" matrix(1,0,0,1,106.434783,149.16129)">
+							<text x="0.0" y="-2.8000000000000007" style="font-family: Helvetica; font-size: 7px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-5) scale(1,-1)">15.2%</text>
+						</g>
+					</g>
+				</g>
+				<g transform="">
+					<g transform="">
+						<path d="M 80,44 L 80,164 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+					</g>
+					<g transform="">
+						<path d="M 80,44 L 75,44 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+						<path d="M 80,84 L 75,84 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+						<path d="M 80,124 L 75,124 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+						<path d="M 80,164 L 75,164 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+					</g>
+					<g transform="">
+						<g transform=" matrix(1,0,0,1,75,64)">
+							<text x="-52.912" y="-3.2" style="font-family: Helvetica; font-size: 8px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-6) scale(1,-1)">Intra-sentential</text>
+						</g>
+						<g transform=" matrix(1,0,0,1,75,104)">
+							<text x="-52.912" y="-3.2" style="font-family: Helvetica; font-size: 8px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-6) scale(1,-1)">Inter-sentential</text>
+						</g>
+						<g transform=" matrix(1,0,0,1,75,144)">
+							<text x="-50.24" y="-3.2" style="font-family: Helvetica; font-size: 8px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-6) scale(1,-1)">Tag Switching</text>
+						</g>
+					</g>
+				</g>
+				<g transform="">
+					<g transform="">
+						<path d="M 80,44 L 234,44 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+					</g>
+					<g transform="">
+						<path d="M 80,44 L 80,39 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+						<path d="M 110.8,44 L 110.8,39 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+						<path d="M 141.6,44 L 141.6,39 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+						<path d="M 172.4,44 L 172.4,39 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+						<path d="M 203.2,44 L 203.2,39 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+						<path d="M 234,44 L 234,39 Z" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 1;"/>
+					</g>
+					<g transform="">
+						<g transform=" matrix(1,0,0,1,80,39)">
+							<text x="-5.0575" y="-7.000000000000001" style="font-family: Helvetica; font-size: 7px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-14) scale(1,-1)">0%</text>
+						</g>
+						<g transform=" matrix(1,0,0,1,110.8,39)">
+							<text x="-7.0035" y="-7.000000000000001" style="font-family: Helvetica; font-size: 7px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-14) scale(1,-1)">20%</text>
+						</g>
+						<g transform=" matrix(1,0,0,1,141.6,39)">
+							<text x="-7.0035" y="-7.000000000000001" style="font-family: Helvetica; font-size: 7px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-14) scale(1,-1)">40%</text>
+						</g>
+						<g transform=" matrix(1,0,0,1,172.4,39)">
+							<text x="-7.0035" y="-7.000000000000001" style="font-family: Helvetica; font-size: 7px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-14) scale(1,-1)">60%</text>
+						</g>
+						<g transform=" matrix(1,0,0,1,203.2,39)">
+							<text x="-7.0035" y="-7.000000000000001" style="font-family: Helvetica; font-size: 7px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-14) scale(1,-1)">80%</text>
+						</g>
+						<g transform=" matrix(1,0,0,1,234,39)">
+							<text x="-8.9495" y="-7.000000000000001" style="font-family: Helvetica; font-size: 7px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-14) scale(1,-1)">100%</text>
+						</g>
+					</g>
+				</g>
+			</g>
+			<rect x="20" y="173" width="9" height="7" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,29%,44%); fill-rule: evenodd;"/>
+			<text x="34" y="173" style="font-family: Helvetica; font-size: 8px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,346) scale(1,-1)">Real-labelled (44)</text>
+			<rect x="140" y="173" width="9" height="7" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(25%,50%,47%); fill-rule: evenodd;"/>
+			<text x="154" y="173" style="font-family: Helvetica; font-size: 8px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,346) scale(1,-1)">AI (46)</text>
+			<text x="23.38799999999999" y="17" style="font-family: Helvetica; font-size: 8px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,34) scale(1,-1)">Percent of each group; AI examples are seed-dependent.</text>
+		</g>
+	</g>
+</svg>

@@ -1,4 +1,4 @@
-Ngram,RealReviews,RealEligiblePositions,RealCount,RealPer1000,AIReviews,AIEligiblePositions,AICount,AIPer1000
-dia memang,44,559,3,5.37,46,627,5,7.97
-repeat order,44,559,3,5.37,46,627,3,4.78
-rasa cheese,44,559,1,1.79,46,627,3,4.78
+Ngram,RealReviews,RealEligiblePositions,RealCount,RealPer1000,AIReviews,AIEligiblePositions,AICount,AIPer1000,RealDistinctReviews,RealReviewIDs,AIDistinctReviews,AIReviewIDs
+dia memang,44,559,3,5.37,46,627,5,7.97,3,REV-030; REV-056; REV-060,5,REV-AI-006; REV-AI-008; REV-AI-017; REV-AI-025; REV-AI-028
+repeat order,44,559,3,5.37,46,627,3,4.78,3,REV-001; REV-053; REV-058,3,REV-AI-004; REV-AI-011; REV-AI-051
+rasa cheese,44,559,1,1.79,46,627,3,4.78,1,REV-009,3,REV-AI-001; REV-AI-060; REV-AI-067
