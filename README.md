@@ -70,9 +70,9 @@ python3 plot_results.py
 
 - Verify the real-labelled texts verbatim against the original sources; preserve collection evidence. Shared source URLs and discovery links are flagged but do not prove fabrication or invalidity.
 - Agree on borrowing versus switching rules, treatment of multilingual reviews, and whether a review can have several switching types. Recheck REV-005, REV-006, REV-011 and similar cases. Two annotators should review disagreements and record resolutions.
-- The latest CSV replaces the earlier noodle-snack records and their AI counterparts. The main workbook still contains the old versions of those eight records.
+- The main Excel workbook is synchronized with all 140 reviews in `corpus_data.csv`, including the eight replacement records. The backup workbook retains its earlier contents.
 - Verify model names, dates, generation prompts and seed provenance. Automatic checks only confirm that seed IDs exist.
-- The Excel workbook has worksheet XML whose encoding declaration disagrees with its bytes; some readers reject it. The pipeline uses the current CSV instead; the workbook and CSV are no longer synchronized. Original workbooks are unchanged.
+- The main workbook's XML encoding declarations have been corrected. Its two review sheets match the current CSV; the analysis pipeline continues to read `corpus_data.csv`.
 - Manually curated lexicon glosses, POS and polarity are interpretations, not automatic predictions. Inspect their corpus examples; spicy wording can express praise or criticism.
 
 ## Report and interpretation
