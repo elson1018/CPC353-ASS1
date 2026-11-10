@@ -105,14 +105,19 @@ def load_reviews(path):
 
 def review_warnings(reviews):
     issues = []
-    real_ids = {r["ReviewID"] for r in reviews if r["DataOrigin"] == REAL}
+    real_reviews = {r["ReviewID"]: r for r in reviews if r["DataOrigin"] == REAL}
     urls = {}
     for r in reviews:
         def warn(kind, detail):
             issues.append(dict(zip(ISSUE_FIELDS, [r["ReviewID"], "review", kind, detail])))
         if r["DataOrigin"] == AI:
-            if r["SourceURL_Seed"] not in real_ids:
+            seed = real_reviews.get(r["SourceURL_Seed"])
+            if seed is None:
                 warn("Missing seed", "Seed does not identify a retained real-labelled review")
+            elif date.fromisoformat(r["ReviewDate"]) < date.fromisoformat(seed["ReviewDate"]):
+                warn("Generation predates seed", f"Recorded generation date {r['ReviewDate']} precedes "
+                     f"seed {seed['ReviewID']} publication {seed['ReviewDate']}; verify generation history "
+                     "or regenerate from a verified seed. Do not invent replacement dates.")
         else:
             source = r["SourceURL_Seed"]
             parsed = urlparse(source)

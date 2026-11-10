@@ -2,6 +2,8 @@ ReviewID,Severity,Issue,Detail
 REV-019,review,Discovery URL,Confirm the original review permalink and verbatim text
 REV-029,review,Discovery URL,Confirm the original review permalink and verbatim text
 REV-057,review,Discovery URL,Confirm the original review permalink and verbatim text
+REV-AI-016,review,Generation predates seed,Recorded generation date 2026-03-24 precedes seed REV-018 publication 2026-07-04; verify generation history or regenerate from a verified seed. Do not invent replacement dates.
+REV-AI-059,review,Generation predates seed,Recorded generation date 2026-05-06 precedes seed REV-061 publication 2026-05-29; verify generation history or regenerate from a verified seed. Do not invent replacement dates.
 REV-004,review,Shared source across products,Check that the source supports this product and review: https://maps.google.com/?cid=1084291827491024
 REV-016,review,Shared source across products,Check that the source supports this product and review: https://maps.google.com/?cid=1084291827491024
 REV-028,review,Shared source across products,Check that the source supports this product and review: https://maps.google.com/?cid=1084291827491024

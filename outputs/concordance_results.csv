@@ -3,13 +3,13 @@ REV-001,Self-Collected (Real),SEDAP,,giler taste carbonara dia,Code-switched,Int
 REV-001,Self-Collected (Real),REPEAT,Will definitely,order,Code-switched,Intra-sentential,5,Sedap giler taste carbonara dia! Very creamy and spicy at the same time. Will definitely repeat order.
 REV-002,Self-Collected (Real),HANCUR,"Pembungkusan sangat kemas, tiada",mie tu,Code-switched,Inter-sentential,4,"Fast delivery by seller. Pembungkusan sangat kemas, tiada hancur mie tu. Recommended!"
 REV-004,Self-Collected (Real),KUAH,,terlalu masin dan tak,Code-switched,Inter-sentential,2,Kuah terlalu masin dan tak rasa santan langsung. Quite disappointed honestly.
-REV-006,Self-Collected (Real),PEDAS,,gila tapi sedap,Code-switched,Intra-sentential,5,Pedas gila tapi sedap! My mouth was burning but still cannot stop eating. Worth every cent!
-REV-006,Self-Collected (Real),SEDAP,Pedas gila tapi,,Code-switched,Intra-sentential,5,Pedas gila tapi sedap! My mouth was burning but still cannot stop eating. Worth every cent!
-REV-006,Self-Collected (Real),WORTH,,every cent,Code-switched,Intra-sentential,5,Pedas gila tapi sedap! My mouth was burning but still cannot stop eating. Worth every cent!
+REV-006,Self-Collected (Real),PEDAS,,gila tapi sedap,Code-switched,Inter-sentential,5,Pedas gila tapi sedap! My mouth was burning but still cannot stop eating. Worth every cent!
+REV-006,Self-Collected (Real),SEDAP,Pedas gila tapi,,Code-switched,Inter-sentential,5,Pedas gila tapi sedap! My mouth was burning but still cannot stop eating. Worth every cent!
+REV-006,Self-Collected (Real),WORTH,,every cent,Code-switched,Inter-sentential,5,Pedas gila tapi sedap! My mouth was burning but still cannot stop eating. Worth every cent!
 REV-009,Self-Collected (Real),PEDAS,Kurang sikit,"berbanding original, so just",Code-switched,Intra-sentential,4,"Rasa cheese powder dia pekat. Kurang sikit pedas berbanding original, so just nice for me."
 REV-010,Self-Collected (Real),KUAH,Hirup,panas-panas waktu hujan memang,Code-switched,Inter-sentential,5,Sour and spicy broth is simply top notch. Hirup kuah panas-panas waktu hujan memang syok.
-REV-011,Self-Collected (Real),KUAH,,santan creamy and thick,Code-switched,Tag Switching,4,Kuah santan creamy and thick. Rasa macam real lontong kuah lodeh. Recommended lah for instant craving!
-REV-011,Self-Collected (Real),KUAH,Rasa macam real lontong,lodeh,Code-switched,Tag Switching,4,Kuah santan creamy and thick. Rasa macam real lontong kuah lodeh. Recommended lah for instant craving!
+REV-011,Self-Collected (Real),KUAH,,santan creamy and thick,Code-switched,Intra-sentential,4,Kuah santan creamy and thick. Rasa macam real lontong kuah lodeh. Recommended lah for instant craving!
+REV-011,Self-Collected (Real),KUAH,Rasa macam real lontong,lodeh,Code-switched,Intra-sentential,4,Kuah santan creamy and thick. Rasa macam real lontong kuah lodeh. Recommended lah for instant craving!
 REV-013,Self-Collected (Real),PEDAS,"Kombinasi manis,",and creamy memang tak,Code-switched,Intra-sentential,5,"Definitely the GOAT of spicy ramen. Kombinasi manis, pedas and creamy memang tak boleh lawan!"
 REV-017,Self-Collected (Real),PEDAS,Level,boleh adjust sebab ada,Code-switched,Intra-sentential,4,Level pedas boleh adjust sebab ada dua sachet cili powder. Quite convenient and taste pun mantap.
 REV-018,Self-Collected (Real),SEDAP,Harap,dan pedas,Code-switched,Intra-sentential,5,💲Price:Reasonable 🍹Flavor:Belum cuba Ghost pepper dry black noodles sudah sampai. First time beli nak cuba. Harap sedap dan pedas. Terima kasih
@@ -34,7 +34,7 @@ REV-050,Self-Collected (Real),SEDAP,Kuah,dihirup terutama bila dimasak,Malay,N/A
 REV-051,Self-Collected (Real),HANCUR,Mi sampai dalam keadaan,lebur,Malay,N/A,1,Mi sampai dalam keadaan hancur lebur. Pembungkusan sangat nipis tanpa balutan tebal langsung.
 REV-052,Self-Collected (Real),PEDAS,lemak berkrim mengurangkan rasa,cili sos,Malay,N/A,4,Serbuk keju lemak berkrim mengurangkan rasa pedas cili sos. Anak-anak pun boleh tumpang makan.
 REV-053,Self-Collected (Real),REPEAT,"Meleleh cheese dia, confirm",order,Code-switched,Intra-sentential,5,"Taste so good bila letak extra slice cheese atas noodle! Meleleh cheese dia, confirm repeat order."
-REV-057,Self-Collected (Real),SEDAP,Murah and,gila compared to Samyang,Code-switched,Tag Switching,4,"Murah and sedap gila compared to Samyang! The spicy kick is real, tapi masih boleh tolerate lah."
+REV-057,Self-Collected (Real),SEDAP,Murah and,gila compared to Samyang,Code-switched,Intra-sentential,4,"Murah and sedap gila compared to Samyang! The spicy kick is real, tapi masih boleh tolerate lah."
 REV-058,Self-Collected (Real),KUAH,,kari putih dia creamy,Code-switched,Inter-sentential,5,Kuah kari putih dia creamy habis. Very fragrant aroma filling the kitchen. Akan repeat order lagi!
 REV-058,Self-Collected (Real),REPEAT,Akan,order lagi,Code-switched,Inter-sentential,5,Kuah kari putih dia creamy habis. Very fragrant aroma filling the kitchen. Akan repeat order lagi!
 REV-059,Self-Collected (Real),PEDAS,Rasa,melampau without any sweet,Code-switched,Inter-sentential,1,Burn my tongue badly! Rasa pedas melampau without any sweet or savory balance. Bad experience.

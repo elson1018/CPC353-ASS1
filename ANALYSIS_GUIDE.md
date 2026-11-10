@@ -1,6 +1,6 @@
 # Annotation and interpretation guide
 
-This is a proposed team procedure, not a completed annotation study. The pipeline continues to use the existing corpus labels. Adopting these rules may change the labels and report results; regenerate the outputs after agreed changes.
+The primary-label policy below is now used for targeted corrections to REV-006, REV-011 and REV-057, recorded in `annotation_changes.csv`. The rest of the corpus still needs consistent review. This is not a completed independent two-annotator study.
 
 ## Research question
 
@@ -13,7 +13,7 @@ The complete review is the counting unit. A review can contain several switching
 1. Two team members independently read the original full review, including punctuation. Ideally, hide the existing classification and the other annotator's decisions during this pass.
 2. Each records the language category, all observed switching types, exact supporting spans, and any uncertainty. Include primarily single-language and uncertain records in the review, not just the 90 currently labelled mixed.
 3. Compare independent decisions, discuss disagreements and record a final resolution. If a third team member adjudicates, record their reason as well.
-4. If retaining the existing single `CodeSwitchingType` field, agree on a primary-type policy before relabelling. One possible project policy is: choose intra-sentential if present, otherwise inter-sentential if present, otherwise tag switching. This is a proposed counting convention, not a linguistic law. Keep all observed types in the separate annotation log so the primary label does not hide them.
+4. For the single `CodeSwitchingType` field, use this project counting convention: choose intra-sentential if present, otherwise inter-sentential if present, otherwise tag switching. Reserve tag switching for reviews whose only identified alternation is a discourse tag. This precedence is not a linguistic law. Record all observed types and exact spans in the separate annotation log so the primary label does not hide them. Apply the same borrowing rules throughout the corpus.
 5. Preserve original labels in the log before changing the corpus. Never fill independent annotation columns with an automatic copy of existing labels. Do not claim two-annotator agreement until it has actually been measured.
 
 Suggested log columns: ReviewID, OriginalLanguage, OriginalSwitchingType, AnnotatorALanguage, AnnotatorATypes, AnnotatorAEvidence, AnnotatorBLanguage, AnnotatorBTypes, AnnotatorBEvidence, FinalLanguage, FinalPrimaryType, AllObservedTypes, ResolutionReason.
@@ -41,7 +41,7 @@ These contexts come from the current KWIC export. Interpretations below are work
 | REV-010 | KUAH | Hirup | panas-panas waktu hujan memang | The KWIC window is Malay; the preceding English sentence in FullText establishes the between-sentence alternation. |
 | REV-057 | SEDAP | Murah and | gila compared to Samyang | The sentence mixes English and Malay. The full review also contains `lah`; a single tag label does not capture every pattern. |
 | REV-023 | HANCUR | dalam keadaan elok tanpa | (empty) | `tanpa` negates damage. The full review switches between English and Malay sentences; the damage word alone is not negative sentiment. |
-| REV-006 | SEDAP | Pedas gila tapi | (empty) | Inspect FullText: Malay exclamation followed by English sentences. The existing intra-sentential label needs discussion rather than automatic acceptance. |
+| REV-006 | SEDAP | Pedas gila tapi | (empty) | FullText contains a Malay exclamation followed by English sentences. Its primary label has been corrected to inter-sentential. |
 
 For a report table, use a small selection with a clear reason (within-sentence, between-sentence, tag/multiple types, and a contextual pitfall). These are illustrative cases, not a random sample or an exhaustive functional analysis. Keep the discussion grounded in the exact spans rather than guessing a reviewer's motivation.
 

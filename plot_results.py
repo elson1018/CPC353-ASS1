@@ -68,10 +68,28 @@ def render_chart(output_dir):
     renderPDF.drawToFile(drawing, str(base.with_suffix('.pdf')))
     renderSVG.drawToFile(drawing, str(base.with_suffix('.svg')))
     converter = shutil.which('pdftoppm')
+    png_created = False
     if converter:
         subprocess.run([converter, '-r', '200', '-singlefile', '-png',
                         str(base.with_suffix('.pdf')), str(base)], check=True, capture_output=True)
-    print('Chart saved as PDF/SVG' + ('/PNG.' if converter else '; install Poppler for PNG export.'))
+        png_created = True
+    else:
+        try:
+            import pypdfium2
+        except ImportError:
+            pass
+        else:
+            with pypdfium2.PdfDocument(str(base.with_suffix('.pdf'))) as document:
+                page = document[0]
+                bitmap = page.render(scale=200 / 72)
+                try:
+                    bitmap.to_pil().save(base.with_suffix('.png'))
+                finally:
+                    bitmap.close()
+                    page.close()
+            png_created = True
+    print('Chart saved as PDF/SVG' + ('/PNG.' if png_created else
+          '; PNG was not refreshed. Install Poppler or pypdfium2 for PNG export.'))
 
 
 if __name__ == '__main__':

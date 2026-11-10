@@ -70,6 +70,19 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(particles['ObservedVariants'], 'kan')
         self.assertEqual(particles['ReviewCount'], 1)
 
+    def test_generation_chronology_flags_without_changing_records(self):
+        seed = record(ReviewDate='2026-07-04')
+        generated = record(ReviewID='REV-AI-001', DataOrigin=pipeline.AI,
+                           SourceURL_Seed='REV-001', ReviewDate='2026-03-24')
+        before = generated.copy()
+        issues = pipeline.review_warnings([seed, generated])
+        self.assertEqual([(i['ReviewID'], i['Issue']) for i in issues],
+                         [('REV-AI-001', 'Generation predates seed')])
+        self.assertEqual(generated, before)
+        for valid_date in ('2026-07-04', '2026-07-05'):
+            generated['ReviewDate'] = valid_date
+            self.assertEqual(pipeline.review_warnings([seed, generated]), [])
+
     def test_report_comparison_uses_mixed_reviews_and_full_denominators(self):
         reviews = [record(ReviewText='Repeat order. Nice taste.'),
                    record(ReviewID='REV-002', ReviewText='Repeat order. Repeat order.',

@@ -64,14 +64,14 @@ python3 nlp_text_analysis.py
 python3 plot_results.py
 ```
 
-`plot_results.py` reads current `switching_distribution.csv` and writes `switching_by_origin.pdf` and `.svg`. If Poppler's `pdftoppm` is available on PATH, it also creates `.png` for Google Docs. The figure compares current primary-label percentages among code-switched reviews only; it does not infer annotation accuracy or independent synthetic behaviour. The plotted percentages are calculated from counts and group sizes. Use `--output-dir` on both scripts for custom output folders.
+`plot_results.py` reads current `switching_distribution.csv` and writes `switching_by_origin.pdf` and `.svg`. If Poppler's `pdftoppm` is available on PATH, or the optional `pypdfium2` package is installed, it also creates `.png` for Google Docs. Otherwise it warns that PNG was not refreshed. The figure compares current primary-label percentages among code-switched reviews only; it does not infer annotation accuracy or independent synthetic behaviour. The plotted percentages are calculated from counts and group sizes. Use `--output-dir` on both scripts for custom output folders.
 
 ## Manual checks before reporting
 
 - Verify the real-labelled texts verbatim against the original sources; preserve collection evidence. Shared source URLs and discovery links are flagged but do not prove fabrication or invalidity.
-- Agree on borrowing versus switching rules, treatment of multilingual reviews, and whether a review can have several switching types. Recheck REV-005, REV-006, REV-011 and similar cases. Two annotators should review disagreements and record resolutions.
+- The primary-type convention is intra-sentential if present, otherwise inter-sentential, otherwise tag switching. Targeted corrections to REV-006, REV-011 and REV-057 are recorded in `annotation_changes.csv`; this is not a complete independent annotation study. Review the rest of the corpus, including ambiguous borrowing such as REV-005, using consistent rules. Two annotators should review disagreements and record resolutions.
 - The main Excel workbook is synchronized with all 140 reviews in `corpus_data.csv`, including the eight replacement records. The backup workbook retains its earlier contents.
-- Verify model names, dates, generation prompts and seed provenance. Automatic checks only confirm that seed IDs exist.
+- Verify model names, dates, generation prompts and seed provenance. Automatic checks flag missing seeds and generation dates earlier than seed publication. They do not establish authenticity. Follow [SUBMISSION_CHECKLIST.md](SUBMISSION_CHECKLIST.md) for unresolved evidence and report checks.
 - The main workbook's XML encoding declarations have been corrected. Its two review sheets match the current CSV; the analysis pipeline continues to read `corpus_data.csv`.
 - Manually curated lexicon glosses, POS and polarity are interpretations, not automatic predictions. Inspect their corpus examples; spicy wording can express praise or criticism.
 
@@ -79,4 +79,4 @@ python3 plot_results.py
 
 The lecturer clarified that at least one NLP technique is required. This project implements KWIC and bigrams. The report is maintained in [Google Docs](https://docs.google.com/document/d/1OpfJmWQtox4oaWvXqSSHQtA-ZumVILknjAfxZOBs_Jg/edit); the submission requires Word and PDF in IEEE format, 3–6 pages excluding the cover, due 13 November 2026.
 
-See [ANALYSIS_GUIDE.md](ANALYSIS_GUIDE.md) for a proposed independent annotation workflow and a KWIC evidence-table preview. These are worked examples and proposed rules, not a completed two-annotator study. Existing corpus labels are unchanged. After any agreed annotation corrections, regenerate all outputs and update report counts. The supplied rubric's weights are inconsistent and need lecturer clarification.
+See [ANALYSIS_GUIDE.md](ANALYSIS_GUIDE.md) for the primary-label convention, a proposed independent annotation workflow and a KWIC evidence-table preview. Three targeted label corrections have been applied; independent agreement has not been measured. After further annotation corrections, regenerate all outputs and update report counts. The supplied rubric's weights are inconsistent and need lecturer clarification.

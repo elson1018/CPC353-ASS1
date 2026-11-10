@@ -1,11 +1,11 @@
 Group,SwitchingType,Count,CodeSwitchedReviews,Percent
-All,Intra-sentential,56,90,62.22
-All,Inter-sentential,21,90,23.33
-All,Tag Switching,13,90,14.44
+All,Intra-sentential,57,90,63.33
+All,Inter-sentential,22,90,24.44
+All,Tag Switching,11,90,12.22
 All,N/A,0,90,0.0
-Self-Collected (Real),Intra-sentential,27,44,61.36
-Self-Collected (Real),Inter-sentential,11,44,25.0
-Self-Collected (Real),Tag Switching,6,44,13.64
+Self-Collected (Real),Intra-sentential,28,44,63.64
+Self-Collected (Real),Inter-sentential,12,44,27.27
+Self-Collected (Real),Tag Switching,4,44,9.09
 Self-Collected (Real),N/A,0,44,0.0
 AI-Generated (LLM),Intra-sentential,29,46,63.04
 AI-Generated (LLM),Inter-sentential,10,46,21.74
