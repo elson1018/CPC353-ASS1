@@ -25,9 +25,12 @@ Suggested log columns: ReviewID, OriginalLanguage, OriginalSwitchingType, Annota
 | Intra-sentential | Identifiable English and Malay wording occurs within the same sentence. Record the spans supporting that reading. |
 | Inter-sentential | The language alternation occurs between sentences. Inspect the full review; a short KWIC window may not show the preceding sentence. |
 | Tag switching | A short discourse item is inserted into surrounding wording. Inspect the full context; the presence of `lah` alone should not override other mixing. |
+| Food names and brand names | Food names and brand names are treated as language-neutral for identifying switching. A code-switching label requires additional identifiable English and Malay wording. This is an annotation convention, not a claim about a name's language of origin. |
 | Borrowed or ambiguous word | Apply a consistent team rule and record ambiguous cases. Do not automatically count every food name, brand, or familiar borrowed term as switching. |
 | Missing punctuation | Do not assume that every language change is a sentence boundary. Mark sentence-type uncertainty where the structure cannot be established reliably. |
 | Additional language | Record it explicitly in the notes and apply a consistent policy for Other/uncertain; do not force every multilingual review into a binary account. |
+
+For example, “Tomyam ni memang sedap” is Malay wording with a food name, and “This tomyam tastes good” is English wording with a food name. Neither is mixed solely because of “tomyam.” In “Tomyam ni very spicy,” Malay “ni” and English “very spicy” provide the additional switching evidence. Apply the convention to both origins when reviewing labels; existing labels have not been systematically reassessed under this rule.
 
 Raw agreement can be calculated separately for language category and primary switching type as matching independent decisions divided by reviews annotated by both people. Report the number of shared reviews and disagreements. If calculating Cohen's kappa, use the original independent decisions, not the final agreed labels. No agreement statistic has been calculated in this project yet.
 
