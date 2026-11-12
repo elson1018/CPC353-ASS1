@@ -320,7 +320,7 @@ def run(input_path, output_dir):
             "sentence_boundaries": ". ! ? … and newlines, except dots between digits", "normalization": "lowercase; retain decimal numbers/prices, hyphens, apostrophes and single-character tokens",
             "stopwords": "discard only n-grams whose tokens are all stopwords",
             "frequency_denominator": "all eligible bigram occurrences in the group before top-25 selection",
-            "labels": "original annotations; not automatically validated linguistically",
+            "labels": "current corpus annotations, including targeted manual corrections; not automatically validated linguistically",
             "sentiment": "rating proxy: 4–5 positive, 3 neutral, 1–2 negative",
             "synthetic_dependence": "AI reviews derive from real-labelled seeds and are not independent observations"}}
     (output_dir / "dataset_summary.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False)+"\n", encoding="utf-8")
