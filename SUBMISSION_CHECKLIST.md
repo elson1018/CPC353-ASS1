@@ -1,3 +1,7 @@
+# Current status — 15 November 2026
+
+REV-061, REV-AI-016 and REV-AI-059 have been removed from the active CSV; their evidence questions below remain historical/unresolved. Active outputs and Google Doc now use 137 reviews. The main workbook still needs synchronization. Proposed full-corpus annotation changes have not been adopted.
+
 # Submission checks
 
 The analysis runs, but source evidence and the final report still need review. Check boxes only after the work is completed. The source-verification log records a targeted earlier check; it does not authenticate the entire corpus.
