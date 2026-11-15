@@ -1,6 +1,6 @@
 # Current status — 15 November 2026
 
-REV-061, REV-AI-016 and REV-AI-059 have been removed from the active CSV; their evidence questions below remain historical/unresolved. Active outputs and Google Doc now use 137 reviews. The main workbook still needs synchronization. Proposed full-corpus annotation changes have not been adopted.
+REV-061, REV-AI-016 and REV-AI-059 have been removed from the active CSV; their evidence questions below remain historical/unresolved. Active outputs and Google Doc now use 137 reviews. The main workbook is synchronized with the active 137-review CSV. Proposed full-corpus annotation changes have not been adopted.
 
 # Submission checks
 
