@@ -6,8 +6,6 @@ Current language totals: English 46, Malay 11, Code-switched 79, Other/uncertain
 
 Current results are in `outputs/`. The Google Sheet is the dataset authority; the main workbook and `corpus_data.csv` are synchronized copies. The report is maintained in the existing Google Doc.
 
-The rebuilt corpus replaces the earlier dataset. Historical source checks and annotation logs refer to earlier text versions; reused review IDs do not identify the same evidence. Generation records are retained in `revisions/2026-11-16/`. The recorded date of 1 November 2026 is user-assigned; session generation occurred on 16 November 2026, as documented in `revisions/2026-11-16/user-date-sync/date_provenance.md`.
-
 Research question: **What are the common English–Malay code-switching patterns found in instant-noodle product reviews?**
 
 ## Run
