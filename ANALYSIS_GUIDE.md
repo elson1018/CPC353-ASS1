@@ -22,9 +22,9 @@ Suggested log columns: ReviewID, OriginalLanguage, OriginalSwitchingType, Annota
 
 | Decision | Proposed rule |
 | --- | --- |
-| Intra-sentential | Identifiable English and Malay wording occurs within the same sentence. Record the spans supporting that reading. |
+| Intra-sentential | Identifiable English and Malay wording occurs within the same sentence beyond a discourse-tag insertion alone. Record the spans supporting that reading. |
 | Inter-sentential | The language alternation occurs between sentences. Inspect the full review; a short KWIC window may not show the preceding sentence. |
-| Tag switching | A short discourse item is inserted into surrounding wording. Inspect the full context; the presence of `lah` alone should not override other mixing. |
+| Tag switching | Otherwise English wording containing discourse tags such as `kan`, `lah`, or `meh` is classified as Code-switched with primary type Tag Switching when those tags are the only identified alternation. A tag insertion alone does not trigger the intra-sentential category. Inspect the words in context as discourse tags, rather than matching character sequences. Tags do not override other within-sentence mixing or alternation between English and Malay sentences. |
 | Food names and brand names | Food names and brand names are treated as language-neutral for identifying switching. A code-switching label requires additional identifiable English and Malay wording. This is an annotation convention, not a claim about a name's language of origin. |
 | Borrowed or ambiguous word | Apply a consistent team rule and record ambiguous cases. Do not automatically count every food name, brand, or familiar borrowed term as switching. |
 | Missing punctuation | Do not assume that every language change is a sentence boundary. Mark sentence-type uncertainty where the structure cannot be established reliably. |
@@ -33,6 +33,20 @@ Suggested log columns: ReviewID, OriginalLanguage, OriginalSwitchingType, Annota
 For example, “Tomyam ni memang sedap” is Malay wording with a food name, and “This tomyam tastes good” is English wording with a food name. Neither is mixed solely because of “tomyam.” In “Tomyam ni very spicy,” Malay “ni” and English “very spicy” provide the additional switching evidence. Apply the convention to both origins when reviewing labels; existing labels have not been systematically reassessed under this rule.
 
 Raw agreement can be calculated separately for language category and primary switching type as matching independent decisions divided by reviews annotated by both people. Report the number of shared reviews and disagreements. If calculating Cohen's kappa, use the original independent decisions, not the final agreed labels. No agreement statistic has been calculated in this project yet.
+
+## Primary label priority and examples
+
+Use **Intra-sentential → Inter-sentential → Tag switching** for one primary label per complete review. This is a manual project convention; the analysis script reads the saved labels and does not automatically assign them.
+
+| Review text | Primary label | Reason |
+| --- | --- | --- |
+| This tastes great lah! | Tag Switching | English wording with only the discourse tag `lah`. Language Classification is Code-switched. |
+| Worth buying, kan? | Tag Switching | English wording with only the discourse tag `kan`. |
+| Is it really spicy meh? | Tag Switching | English wording with only the discourse tag `meh`. |
+| Kuah dia creamy lah! | Intra-sentential | Malay wording mixes with English `creamy` beyond the tag. |
+| Sedap sangat. I will buy again lah! | Inter-sentential | Malay and English alternate between sentences; the additional tag does not override this. |
+
+These tags are operationally counted as switching for this project; their use alone does not establish a speaker's identity or the historical language origin of the particle. Apply the same convention to both recorded origins. Existing corpus labels still require manual review under this clarified policy.
 
 ## KWIC evidence table preview
 

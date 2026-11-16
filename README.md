@@ -81,6 +81,10 @@ The lecturer clarified that at least one NLP technique is required. This project
 
 See [ANALYSIS_GUIDE.md](ANALYSIS_GUIDE.md) for the primary-label convention, a proposed independent annotation workflow and a KWIC evidence-table preview. Three targeted label corrections have been applied; independent agreement has not been measured. After further annotation corrections, regenerate all outputs and update report counts. The supplied rubric's weights are inconsistent and need lecturer clarification.
 
+## Clarified annotation rule — 16 November 2026
+
+Assign one primary label per review in this order: **Intra-sentential → Inter-sentential → Tag switching**. A discourse-tag insertion alone does not count as intra-sentential mixing. Otherwise English reviews containing only discourse tags such as `kan`, `lah`, or `meh` are classified as **Code-switched / Tag Switching**. If other within-sentence English–Malay mixing occurs, choose intra-sentential; otherwise, if English and Malay alternate between sentences, choose inter-sentential. Read tags in context and apply borrowing rules consistently. See `ANALYSIS_GUIDE.md` for examples. This is a manual annotation policy, not automatic classification by the script; this clarification does not relabel records or regenerate results.
+
 ## Record exclusions — 15 November 2026
 
 REV-061 was excluded because its complete original text could not be verified as one review. REV-AI-016 and REV-AI-059 were excluded because their recorded generation dates preceded their referenced seeds and generation-history evidence was unavailable. Dates were not invented or changed. Outputs and the shared report have been updated for 137 retained reviews (87 code-switched; 56 intra-sentential, 20 inter-sentential, 11 tag-labelled). The separate assistant annotation proposals have not been applied to the active corpus. Earlier source-verification notes are historical evidence, not a claim that excluded records remain active.
