@@ -1,3 +1,7 @@
+# Historical source-verification log — previous corpus
+
+This audit concerns the earlier corpus, before the 142-review rebuild. Review IDs were reused with different text. Findings below do not establish the status of current records.
+
 # Source verification on 9 November 2026
 
 This log records a targeted check of the four replacement real-labelled reviews and the two inconsistent AI dates in commit `7fea83a`. It does not verify the entire corpus. The corpus, workbooks, analysis outputs and Google Doc were not modified during this check.

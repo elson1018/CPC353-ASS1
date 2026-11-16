@@ -115,7 +115,7 @@ def review_warnings(reviews):
             elif date.fromisoformat(r["ReviewDate"]) < date.fromisoformat(seed["ReviewDate"]):
                 warn("Generation predates seed", f"Recorded generation date {r['ReviewDate']} precedes "
                      f"seed {seed['ReviewID']} publication {seed['ReviewDate']}; verify generation history "
-                     "or regenerate from a verified seed. Do not invent replacement dates.")
+                     "or regenerate from a verified seed. Verify the recorded date against seed publication.")
         else:
             source = r["SourceURL_Seed"]
             parsed = urlparse(source)
@@ -196,7 +196,7 @@ def ranked_ngrams(reviews, label, limit=25):
             for gram, count in sorted(counts.items(), key=lambda item: (-item[1], item[0]))[:limit]]
 
 
-REPORT_BIGRAMS = ("dia memang", "repeat order", "rasa cheese")
+REPORT_BIGRAMS = ("terima kasih", "boleh repeat", "repeat order")
 REPORT_COMPARISON_FIELDS = ["Ngram", "RealReviews", "RealEligiblePositions", "RealCount",
                             "RealPer1000", "AIReviews", "AIEligiblePositions", "AICount", "AIPer1000",
                             "RealDistinctReviews", "RealReviewIDs", "AIDistinctReviews", "AIReviewIDs"]

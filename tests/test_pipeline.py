@@ -95,7 +95,7 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual((row['AIReviews'], row['AIEligiblePositions'], row['AICount']), (1, 3, 1))
         self.assertEqual(row['RealPer1000'], 500)
         self.assertEqual(row['AIPer1000'], 333.33)
-        absent = next(r for r in pipeline.report_origin_comparison(reviews) if r['Ngram'] == 'rasa cheese')
+        absent = next(r for r in pipeline.report_origin_comparison(reviews) if r['Ngram'] == 'terima kasih')
         self.assertEqual((absent['RealCount'], absent['RealPer1000']), (0, 0))
 
     def test_report_comparison_empty_group_rate_is_undefined(self):

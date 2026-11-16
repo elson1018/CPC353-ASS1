@@ -1,20 +1,12 @@
 # CPC353 English–Malay review analysis
 
-## Current rebuilt dataset — 16 November 2026
-
-This section supersedes the historical corpus descriptions below. AI date fields were synchronized from the user-edited Google Sheet to 2026-11-01. These are user-assigned dates; the reviews were produced in this conversation on 2026-11-16. Original generation logs and backups preserve that history. See revisions/2026-11-16/user-date-sync/date_provenance.md.
-
 The active CSV and main workbook contain **142 reviews: 70 self-collected and 72 recorded as generated with GPT-6.1 Sol**. All 142 pass structural validation; no normalized duplicates or automated review flags remain. This does not establish source authenticity or independent annotation accuracy.
 
 Current language totals: English 46, Malay 11, Code-switched 79, Other/uncertain 6. Primary types in the mixed subset: intra-sentential 70, inter-sentential 7, tag switching 2. Self-collected mixed reviews: 37/3/0 out of 40; synthetic mixed reviews: 33/4/2 out of 39. Synthetic language patterns were requested in the recorded instructions and are not independent observations of human behaviour.
 
-The rebuilt source texts replace the former corpus; earlier review-ID examples below refer to historical versions and must not be quoted as current evidence. Current outputs are in `outputs/`. The synchronized report is maintained in the existing Google Doc; the two local report deliverables were removed at the users request. The cover in the current report lists Yap Han Lim's matric number as 23304586; this filename follows that source document.
+Current results are in `outputs/`. The Google Sheet is the dataset authority; the main workbook and `corpus_data.csv` are synchronized copies. The report is maintained in the existing Google Doc.
 
-Run `.venv/bin/python nlp_text_analysis.py`, `.venv/bin/python plot_results.py`, and `.venv/bin/python -m unittest discover -s tests -v`. The final run retained 142 records and all 13 tests passed. Backups and synchronization records are under `revisions/2026-11-16/rebuild-sync/`. Source screenshots and team annotation review remain manual checks.
-
-## Historical project notes
-
-This project studies code-switching in food reviews using KWIC concordances and bigram frequencies. The active corpus contains 137 reviews: 69 labelled self-collected and 68 labelled AI-generated. Three of the original 140 records (REV-061, REV-AI-016 and REV-AI-059) were excluded for unresolved source evidence or generation chronology. Source provenance and linguistic annotations still require manual verification.
+The rebuilt corpus replaces the earlier dataset. Historical source checks and annotation logs refer to earlier text versions; reused review IDs do not identify the same evidence. Generation records are retained in `revisions/2026-11-16/`. The recorded date of 1 November 2026 is user-assigned; session generation occurred on 16 November 2026, as documented in `revisions/2026-11-16/user-date-sync/date_provenance.md`.
 
 Research question: **What are the common English–Malay code-switching patterns found in instant-noodle product reviews?**
 
@@ -58,7 +50,7 @@ Tokens are lowercase Unicode words/numbers, including decimal prices; hyphens, a
 
 Ties sort alphabetically. Each normalized frequency is occurrences per 1,000 eligible bigram positions within that group, calculated before top-25 selection. Empty groups produce no bigram rows. Zero-count groups remain visible in distribution tables.
 
-Ratings are a sentiment proxy: 4–5 positive, 3 neutral, 1–2 negative. Bigram comparisons are exported overall, by origin, by code-switched subset within each origin, and by rating group within each origin. Table IV uses only code-switched reviews in both origin groups; its fixed illustrative phrases are not an automatic top-three selection. AI examples depend on real-labelled seeds, so they cannot be treated as independent evidence of human behaviour. Bigrams from code-switched reviews are not necessarily cross-language bigrams; token-level language annotation would be needed to make that claim.
+Ratings are a sentiment proxy: 4–5 positive, 3 neutral, 1–2 negative. Bigram comparisons are exported overall, by origin, by code-switched subset within each origin, and by rating group within each origin. Table IV uses only code-switched reviews in both origin groups; its selected phrases (`terima kasih`, `boleh repeat`, and `repeat order`) are not an automatic top-three selection. AI examples depend on real-labelled seeds, so they cannot be treated as independent evidence of human behaviour. Bigrams from code-switched reviews are not necessarily cross-language bigrams; token-level language annotation would be needed to make that claim.
 
 Validation rejects missing required fields, invalid categories/ratings/dates, malformed CSV rows, and duplicate IDs. Case/whitespace-normalized duplicate texts retain the first valid record. Invalid records trigger a nonzero exit after diagnostic exports; missing columns stop analysis. The current schema treats metadata fields as required; genuinely unavailable metadata should be documented and the validation policy deliberately revised rather than invented.
 
@@ -80,25 +72,12 @@ python3 plot_results.py
 
 `plot_results.py` reads current `switching_distribution.csv` and writes `switching_by_origin.pdf` and `.svg`. If Poppler's `pdftoppm` is available on PATH, or the optional `pypdfium2` package is installed, it also creates `.png` for Google Docs. Otherwise it warns that PNG was not refreshed. The figure compares current primary-label percentages among code-switched reviews only; it does not infer annotation accuracy or independent synthetic behaviour. The plotted percentages are calculated from counts and group sizes. Use `--output-dir` on both scripts for custom output folders.
 
-## Manual checks before reporting
+## Annotation and source review
 
-- Verify the real-labelled texts verbatim against the original sources; preserve collection evidence. Shared source URLs and discovery links are flagged but do not prove fabrication or invalidity.
-- The primary-type convention is intra-sentential if present, otherwise inter-sentential, otherwise tag switching. Targeted corrections to REV-006, REV-011 and REV-057 are recorded in `annotation_changes.csv`; this is not a complete independent annotation study. Review the rest of the corpus, including ambiguous borrowing such as REV-005, using consistent rules. Two annotators should review disagreements and record resolutions.
-- The main Excel workbook is synchronized with the active 137-review CSV (69 real-labelled and 68 AI-generated); the three excluded records have been removed, and summary formulas recalculated. The backup workbook retains its earlier contents.
-- Verify model names, dates, generation prompts and seed provenance. Automatic checks flag missing seeds and generation dates earlier than seed publication. They do not establish authenticity. Follow [SUBMISSION_CHECKLIST.md](SUBMISSION_CHECKLIST.md) for unresolved evidence and report checks.
-- The main workbook's XML encoding declarations have been corrected. Its two review sheets match the current CSV; the analysis pipeline continues to read `corpus_data.csv`.
-- Manually curated lexicon glosses, POS and polarity are interpretations, not automatic predictions. Inspect their corpus examples; spicy wording can express praise or criticism.
+The primary-label convention is **Intra-sentential → Inter-sentential → Tag switching**. A discourse-tag insertion alone does not trigger intra-sentential mixing. The active records have AI-assisted annotations; independent annotator agreement has not been measured. See [ANALYSIS_GUIDE.md](ANALYSIS_GUIDE.md) for rules and current examples.
 
-## Report and interpretation
+Source evidence and linguistic accuracy require review beyond structural validation. Preserve identifiable original reviews, metadata, generation instructions and seed references. Historical findings in `SOURCE_VERIFICATION.md` and `annotation_changes.csv` apply to the former corpus, not automatically to current review IDs. See [SUBMISSION_CHECKLIST.md](SUBMISSION_CHECKLIST.md) for current submission checks.
 
-The lecturer clarified that at least one NLP technique is required. This project implements KWIC and bigrams. The report is maintained in [Google Docs](https://docs.google.com/document/d/1OpfJmWQtox4oaWvXqSSHQtA-ZumVILknjAfxZOBs_Jg/edit); the submission requires Word and PDF in IEEE format, 3–6 pages excluding the cover, due 13 November 2026.
+## Report and submission
 
-See [ANALYSIS_GUIDE.md](ANALYSIS_GUIDE.md) for the primary-label convention, a proposed independent annotation workflow and a KWIC evidence-table preview. Three targeted label corrections have been applied; independent agreement has not been measured. After further annotation corrections, regenerate all outputs and update report counts. The supplied rubric's weights are inconsistent and need lecturer clarification.
-
-## Clarified annotation rule — 16 November 2026
-
-Assign one primary label per review in this order: **Intra-sentential → Inter-sentential → Tag switching**. A discourse-tag insertion alone does not count as intra-sentential mixing. Otherwise English reviews containing only discourse tags such as `kan`, `lah`, or `meh` are classified as **Code-switched / Tag Switching**. If other within-sentence English–Malay mixing occurs, choose intra-sentential; otherwise, if English and Malay alternate between sentences, choose inter-sentential. Read tags in context and apply borrowing rules consistently. See `ANALYSIS_GUIDE.md` for examples. This is a manual annotation policy, not automatic classification by the script; this clarification does not relabel records or regenerate results.
-
-## Record exclusions — 15 November 2026
-
-REV-061 was excluded because its complete original text could not be verified as one review. REV-AI-016 and REV-AI-059 were excluded because their recorded generation dates preceded their referenced seeds and generation-history evidence was unavailable. Dates were not invented or changed. Outputs and the shared report have been updated for 137 retained reviews (87 code-switched; 56 intra-sentential, 20 inter-sentential, 11 tag-labelled). The separate assistant annotation proposals have not been applied to the active corpus. Earlier source-verification notes are historical evidence, not a claim that excluded records remain active.
+This project implements KWIC and bigram analysis. The report is maintained in [Google Docs](https://docs.google.com/document/d/1OpfJmWQtox4oaWvXqSSHQtA-ZumVILknjAfxZOBs_Jg/edit). The report cover records a submission deadline of **17 November 2026 at 12 noon**. Submission requires Word and PDF in IEEE format, 3–6 pages excluding the cover; the current report has five pages plus its cover.

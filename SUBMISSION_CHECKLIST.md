@@ -1,48 +1,34 @@
-# Current status — 16 November 2026
+# Submission checklist
 
-The dataset has been rebuilt: 142 current records (70 self-collected, 72 AI-generated), all structurally retained; zero normalized duplicates and automated review flags. Outputs and the existing Google Doc are synchronized. All 13 automated tests pass. Review source evidence, AI-assisted annotations, references and final submission files as a team. The existing Google Doc has been updated directly, including its editable chart; export Word and PDF from that document when ready to submit.
+## Current dataset
 
-## Historical checklist — earlier corpus
+- [x] Synchronize the active Google Sheet, workbook and CSV: 142 reviews (70 self-collected, 72 AI-generated).
+- [x] Regenerate analysis exports: 79 mixed reviews, with 70 intra-sentential, seven inter-sentential and two tag-switching primary labels.
+- [x] Confirm structural validation: zero rejected records, normalized duplicates or automated review flags.
+- [x] Run all 13 automated tests.
+- [ ] Retain identifiable source evidence for self-collected reviews and review AI-assisted annotations as a team.
+- [ ] Complete independent annotation and adjudication before reporting annotator agreement.
 
-REV-061, REV-AI-016 and REV-AI-059 have been removed from the active CSV; their evidence questions below remain historical/unresolved. Active outputs and Google Doc now use 137 reviews. The main workbook is synchronized with the active 137-review CSV. Proposed full-corpus annotation changes have not been adopted.
+The Google Sheet is the dataset authority. Structural validation does not authenticate source reviews or independently validate language labels. Generation records preserve seed dependence and distinguish user-assigned dates from actual session generation dates.
 
-# Submission checks
+## Report
 
-The analysis runs, but source evidence and the final report still need review. Check boxes only after the work is completed. The source-verification log records a targeted earlier check; it does not authenticate the entire corpus.
+- [x] Align tables, examples and chart with current outputs.
+- [x] Describe the review-level unit, methods, annotation conventions and limitations.
+- [x] Keep Figure 1 and Table V readable without split content.
+- [x] Confirm five report pages plus cover, within the 3–6-page requirement excluding cover.
+- [ ] Complete the team's final source, reference and content review.
+- [ ] Export Word and PDF from the original Google Doc and inspect the submission copies.
+- [ ] Submit through eLearn by the deadline recorded on the report cover: **17 November 2026 at 12 noon**.
 
-## Source evidence
+Report: https://docs.google.com/document/d/1OpfJmWQtox4oaWvXqSSHQtA-ZumVILknjAfxZOBs_Jg/edit
 
-- [ ] REV-061: obtain an original review or screenshot supporting the complete text. The previous source check found the English and Malay portions in separate reviews. If necessary, replace this record with one verified complete review and re-annotate it. Do not treat the current combined text as verified human code-switching.
-- [ ] REV-AI-016: confirm its actual generation date, model and prompt. Its recorded 2026-03-24 date precedes seed REV-018's 2026-07-04 publication. If history is unavailable, generate a replacement from the verified seed and record the actual new details.
-- [ ] REV-AI-059: resolve seed REV-061 first, then verify generation history or regenerate. Its recorded 2026-05-06 date precedes the seed's 2026-05-29 date.
-- [ ] Verify the seven records sharing the Google Maps URL: REV-004, REV-016, REV-028, REV-034, REV-040, REV-055, REV-068.
-- [ ] Locate original reviews behind Lemon8 discovery links for REV-019, REV-029, REV-057.
-- [ ] Verify remaining real-labelled records and AI model/prompt history. Shared URLs and discovery links are flags, not proof of invalidity.
+## Reproduction
 
-For each real record, retain the full original text, URL, available metadata and screenshot/export reference. Never invent missing ratings or dates. The current validator requires both; revise its policy deliberately if verified sources lack metadata. For each AI record, retain the seed ID, exact prompt/output, model used and actual generation date. Do not describe existing text as newly generated without generating it.
-
-## Annotation and regenerated results
-
-- [x] Apply targeted primary-label corrections to REV-006, REV-011 and REV-057, preserving original labels and reasons in `annotation_changes.csv`.
-- [ ] Apply the documented policy consistently to all reviews, including ambiguous borrowings and multiple switching types.
-- [ ] Complete independent annotation and resolution if claiming two-annotator agreement. Targeted corrections alone do not establish agreement.
-- [ ] After evidence or label changes, synchronize the CSV and main workbook, run the pipeline and tests, then regenerate the chart.
-
-```powershell
-python nlp_text_analysis.py
-python -m unittest discover -s tests -v
-python plot_results.py
+```bash
+.venv/bin/python nlp_text_analysis.py
+.venv/bin/python -m unittest discover -s tests -v
+.venv/bin/python plot_results.py
 ```
 
-## Final report
-
-- [ ] Update counts, tables, chart and examples from the final regenerated outputs.
-- [ ] Explain the review-level counting unit, cleaning, sampling, source evidence, AI generation and primary-label policy.
-- [ ] Interpret KWIC examples in full context. Distinguish bigrams within mixed reviews from actual cross-language boundaries. Describe Table IV phrases as selected illustrations.
-- [ ] Separate real-labelled and seed-dependent AI evidence. Do not infer reviewer motivations from counts alone or claim independent AI observations of human behaviour.
-- [ ] Include title/abstract, motivation/question, dataset scenario, related methods/literature, text exploration, findings, conclusion and references.
-- [ ] Connect relevant seminal and recent literature, cite methods/tools and support substantive claims with reliable sources.
-- [ ] Inspect final IEEE formatting and 3–6 pages excluding the cover. Export both Word and PDF for eLearn submission on 13 November 2026.
-- [ ] Confirm rubric weighting with the lecturer if a numerical self-score is needed; the supplied totals are inconsistent.
-
-The report is linked from README but has not been edited or verified here. Evidence-dependent corrections remain open; generated outputs are provisional while those issues remain.
+`SOURCE_VERIFICATION.md` and `annotation_changes.csv` document the previous corpus. Their review IDs and findings are historical and do not automatically apply to the rebuilt data.
