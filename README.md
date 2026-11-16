@@ -4,7 +4,7 @@ The active CSV and main workbook contain **142 reviews: 70 self-collected and 72
 
 Current language totals: English 46, Malay 11, Code-switched 79, Other/uncertain 6. Primary types in the mixed subset: intra-sentential 70, inter-sentential 7, tag switching 2. Self-collected mixed reviews: 37/3/0 out of 40; synthetic mixed reviews: 33/4/2 out of 39. Synthetic language patterns were requested in the recorded instructions and are not independent observations of human behaviour.
 
-Current results are in `outputs/`. The Google Sheet is the dataset authority; the main workbook and `corpus_data.csv` are synchronized copies. The report is maintained in the existing Google Doc.
+Current results are in `outputs/`. The Google Sheet is the dataset authority; the main workbook and `corpus_data.csv` are synchronized copies.
 
 Research question: **What are the common English–Malay code-switching patterns found in instant-noodle product reviews?**
 
@@ -23,7 +23,7 @@ Custom input/output:
 python3 nlp_text_analysis.py --input corpus_data.csv --output-dir outputs
 ```
 
-The script reads the CSV with UTF-8 BOM support. Input files and original annotation values are preserved. Generated files in the chosen output directory are overwritten on each run. The two CSV results at repository root are legacy teammate outputs; use `outputs/` for current findings.
+The script reads the CSV with UTF-8 BOM support. Input files and original annotation values are preserved. Generated files in the chosen output directory are overwritten on each run.
 
 ## Outputs
 
@@ -67,15 +67,3 @@ python3 -m pip install reportlab
 python3 nlp_text_analysis.py
 python3 plot_results.py
 ```
-
-`plot_results.py` reads current `switching_distribution.csv` and writes `switching_by_origin.pdf` and `.svg`. If Poppler's `pdftoppm` is available on PATH, or the optional `pypdfium2` package is installed, it also creates `.png` for Google Docs. Otherwise it warns that PNG was not refreshed. The figure compares current primary-label percentages among code-switched reviews only; it does not infer annotation accuracy or independent synthetic behaviour. The plotted percentages are calculated from counts and group sizes. Use `--output-dir` on both scripts for custom output folders.
-
-## Annotation and source review
-
-The primary-label convention is **Intra-sentential → Inter-sentential → Tag switching**. A discourse-tag insertion alone does not trigger intra-sentential mixing. The active records have AI-assisted annotations; independent annotator agreement has not been measured. See [ANALYSIS_GUIDE.md](ANALYSIS_GUIDE.md) for rules and current examples.
-
-Source evidence and linguistic accuracy require review beyond structural validation. Preserve identifiable original reviews, metadata, generation instructions and seed references. Historical findings in `SOURCE_VERIFICATION.md` and `annotation_changes.csv` apply to the former corpus, not automatically to current review IDs. See [SUBMISSION_CHECKLIST.md](SUBMISSION_CHECKLIST.md) for current submission checks.
-
-## Report and submission
-
-This project implements KWIC and bigram analysis. The report is maintained in [Google Docs](https://docs.google.com/document/d/1OpfJmWQtox4oaWvXqSSHQtA-ZumVILknjAfxZOBs_Jg/edit). The report cover records a submission deadline of **17 November 2026 at 12 noon**. Submission requires Word and PDF in IEEE format, 3–6 pages excluding the cover; the current report has five pages plus its cover.
