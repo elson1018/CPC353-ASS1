@@ -1,11 +1,1 @@
 ReviewID,Severity,Issue,Detail
-REV-019,review,Discovery URL,Confirm the original review permalink and verbatim text
-REV-029,review,Discovery URL,Confirm the original review permalink and verbatim text
-REV-057,review,Discovery URL,Confirm the original review permalink and verbatim text
-REV-004,review,Shared source across products,Check that the source supports this product and review: https://maps.google.com/?cid=1084291827491024
-REV-016,review,Shared source across products,Check that the source supports this product and review: https://maps.google.com/?cid=1084291827491024
-REV-028,review,Shared source across products,Check that the source supports this product and review: https://maps.google.com/?cid=1084291827491024
-REV-034,review,Shared source across products,Check that the source supports this product and review: https://maps.google.com/?cid=1084291827491024
-REV-040,review,Shared source across products,Check that the source supports this product and review: https://maps.google.com/?cid=1084291827491024
-REV-055,review,Shared source across products,Check that the source supports this product and review: https://maps.google.com/?cid=1084291827491024
-REV-068,review,Shared source across products,Check that the source supports this product and review: https://maps.google.com/?cid=1084291827491024

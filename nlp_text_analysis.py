@@ -1,5 +1,3 @@
-"""Reproducible descriptive analysis of the CPC353 review corpus (stdlib only)."""
-
 import argparse
 import csv
 import json

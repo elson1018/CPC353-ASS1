@@ -14,30 +14,29 @@
 			<text x="42.092" y="186" style="font-family: Helvetica; font-size: 8px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,372) scale(1,-1)">Code-switched reviews; existing primary labels</text>
 			<g transform="">
 				<g transform="">
-					<rect x="80.0" y="53.67741935483871" width="100.27906976744185" height="10.322580645161288" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0; fill: rgb(14%,29%,44%); fill-rule: evenodd;"/>
-					<rect x="80.0" y="93.6774193548387" width="39.3953488372093" height="10.322580645161295" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0; fill: rgb(14%,29%,44%); fill-rule: evenodd;"/>
-					<rect x="80.0" y="133.67741935483872" width="14.325581395348834" height="10.322580645161281" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0; fill: rgb(14%,29%,44%); fill-rule: evenodd;"/>
-					<rect x="80.0" y="64.0" width="98.0" height="10.322580645161295" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0; fill: rgb(25%,50%,47%); fill-rule: evenodd;"/>
-					<rect x="80.0" y="104.0" width="31.5" height="10.322580645161295" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0; fill: rgb(25%,50%,47%); fill-rule: evenodd;"/>
-					<rect x="80.0" y="144.0" width="24.5" height="10.322580645161281" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0; fill: rgb(25%,50%,47%); fill-rule: evenodd;"/>
+					<rect x="80.0" y="53.67741935483871" width="142.45000000000002" height="10.322580645161288" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0; fill: rgb(14%,29%,44%); fill-rule: evenodd;"/>
+					<rect x="80.0" y="93.6774193548387" width="11.549999999999997" height="10.322580645161295" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0; fill: rgb(14%,29%,44%); fill-rule: evenodd;"/>
+					<rect x="80.0" y="64.0" width="130.30769230769232" height="10.322580645161295" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0; fill: rgb(25%,50%,47%); fill-rule: evenodd;"/>
+					<rect x="80.0" y="104.0" width="15.794871794871796" height="10.322580645161295" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0; fill: rgb(25%,50%,47%); fill-rule: evenodd;"/>
+					<rect x="80.0" y="144.0" width="7.897435897435898" height="10.322580645161281" style="stroke: rgb(0%,0%,0%); stroke-linecap: butt; stroke-width: 0; fill: rgb(25%,50%,47%); fill-rule: evenodd;"/>
 					<g transform="">
-						<g transform=" matrix(1,0,0,1,183.27907,58.83871)">
-							<text x="0.0" y="-2.8000000000000007" style="font-family: Helvetica; font-size: 7px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-5) scale(1,-1)">65.1%</text>
+						<g transform=" matrix(1,0,0,1,225.45,58.83871)">
+							<text x="0.0" y="-2.8000000000000007" style="font-family: Helvetica; font-size: 7px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-5) scale(1,-1)">92.5%</text>
 						</g>
-						<g transform=" matrix(1,0,0,1,122.395349,98.83871)">
-							<text x="0.0" y="-2.8000000000000007" style="font-family: Helvetica; font-size: 7px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-5) scale(1,-1)">25.6%</text>
+						<g transform=" matrix(1,0,0,1,94.55,98.83871)">
+							<text x="0.0" y="-2.8000000000000007" style="font-family: Helvetica; font-size: 7px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-5) scale(1,-1)">7.5%</text>
 						</g>
-						<g transform=" matrix(1,0,0,1,97.325581,138.83871)">
-							<text x="0.0" y="-2.8000000000000007" style="font-family: Helvetica; font-size: 7px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-5) scale(1,-1)">9.3%</text>
+						<g transform=" matrix(1,0,0,1,83,138.83871)">
+							<text x="0.0" y="-2.8000000000000007" style="font-family: Helvetica; font-size: 7px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-5) scale(1,-1)">0.0%</text>
 						</g>
-						<g transform=" matrix(1,0,0,1,181,69.16129)">
-							<text x="0.0" y="-2.8000000000000007" style="font-family: Helvetica; font-size: 7px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-5) scale(1,-1)">63.6%</text>
+						<g transform=" matrix(1,0,0,1,213.307692,69.16129)">
+							<text x="0.0" y="-2.8000000000000007" style="font-family: Helvetica; font-size: 7px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-5) scale(1,-1)">84.6%</text>
 						</g>
-						<g transform=" matrix(1,0,0,1,114.5,109.16129)">
-							<text x="0.0" y="-2.8000000000000007" style="font-family: Helvetica; font-size: 7px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-5) scale(1,-1)">20.5%</text>
+						<g transform=" matrix(1,0,0,1,98.794872,109.16129)">
+							<text x="0.0" y="-2.8000000000000007" style="font-family: Helvetica; font-size: 7px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-5) scale(1,-1)">10.3%</text>
 						</g>
-						<g transform=" matrix(1,0,0,1,107.5,149.16129)">
-							<text x="0.0" y="-2.8000000000000007" style="font-family: Helvetica; font-size: 7px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-5) scale(1,-1)">15.9%</text>
+						<g transform=" matrix(1,0,0,1,90.897436,149.16129)">
+							<text x="0.0" y="-2.8000000000000007" style="font-family: Helvetica; font-size: 7px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,-5) scale(1,-1)">5.1%</text>
 						</g>
 					</g>
 				</g>
@@ -98,9 +97,9 @@
 				</g>
 			</g>
 			<rect x="20" y="173" width="9" height="7" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(14%,29%,44%); fill-rule: evenodd;"/>
-			<text x="34" y="173" style="font-family: Helvetica; font-size: 8px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,346) scale(1,-1)">Real-labelled (43)</text>
+			<text x="34" y="173" style="font-family: Helvetica; font-size: 8px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,346) scale(1,-1)">Real-labelled (40)</text>
 			<rect x="140" y="173" width="9" height="7" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(25%,50%,47%); fill-rule: evenodd;"/>
-			<text x="154" y="173" style="font-family: Helvetica; font-size: 8px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,346) scale(1,-1)">AI (44)</text>
+			<text x="154" y="173" style="font-family: Helvetica; font-size: 8px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,346) scale(1,-1)">AI (39)</text>
 			<text x="23.38799999999999" y="17" style="font-family: Helvetica; font-size: 8px;fill: rgb(0%,0%,0%); stroke:none;" transform="translate(0,34) scale(1,-1)">Percent of each group; AI examples are seed-dependent.</text>
 		</g>
 	</g>

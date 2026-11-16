@@ -1,5 +1,19 @@
 # CPC353 English–Malay review analysis
 
+## Current rebuilt dataset — 16 November 2026
+
+This section supersedes the historical corpus descriptions below. AI date fields were synchronized from the user-edited Google Sheet to 2026-11-01. These are user-assigned dates; the reviews were produced in this conversation on 2026-11-16. Original generation logs and backups preserve that history. See revisions/2026-11-16/user-date-sync/date_provenance.md.
+
+The active CSV and main workbook contain **142 reviews: 70 self-collected and 72 recorded as generated with GPT-6.1 Sol**. All 142 pass structural validation; no normalized duplicates or automated review flags remain. This does not establish source authenticity or independent annotation accuracy.
+
+Current language totals: English 46, Malay 11, Code-switched 79, Other/uncertain 6. Primary types in the mixed subset: intra-sentential 70, inter-sentential 7, tag switching 2. Self-collected mixed reviews: 37/3/0 out of 40; synthetic mixed reviews: 33/4/2 out of 39. Synthetic language patterns were requested in the recorded instructions and are not independent observations of human behaviour.
+
+The rebuilt source texts replace the former corpus; earlier review-ID examples below refer to historical versions and must not be quoted as current evidence. Current outputs are in `outputs/`. The synchronized report is maintained in the existing Google Doc; the two local report deliverables were removed at the users request. The cover in the current report lists Yap Han Lim's matric number as 23304586; this filename follows that source document.
+
+Run `.venv/bin/python nlp_text_analysis.py`, `.venv/bin/python plot_results.py`, and `.venv/bin/python -m unittest discover -s tests -v`. The final run retained 142 records and all 13 tests passed. Backups and synchronization records are under `revisions/2026-11-16/rebuild-sync/`. Source screenshots and team annotation review remain manual checks.
+
+## Historical project notes
+
 This project studies code-switching in food reviews using KWIC concordances and bigram frequencies. The active corpus contains 137 reviews: 69 labelled self-collected and 68 labelled AI-generated. Three of the original 140 records (REV-061, REV-AI-016 and REV-AI-059) were excluded for unresolved source evidence or generation chronology. Source provenance and linguistic annotations still require manual verification.
 
 Research question: **What are the common English–Malay code-switching patterns found in instant-noodle product reviews?**

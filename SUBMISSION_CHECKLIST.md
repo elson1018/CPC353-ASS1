@@ -1,4 +1,8 @@
-# Current status — 15 November 2026
+# Current status — 16 November 2026
+
+The dataset has been rebuilt: 142 current records (70 self-collected, 72 AI-generated), all structurally retained; zero normalized duplicates and automated review flags. Outputs and the existing Google Doc are synchronized. All 13 automated tests pass. Review source evidence, AI-assisted annotations, references and final submission files as a team. The existing Google Doc has been updated directly, including its editable chart; export Word and PDF from that document when ready to submit.
+
+## Historical checklist — earlier corpus
 
 REV-061, REV-AI-016 and REV-AI-059 have been removed from the active CSV; their evidence questions below remain historical/unresolved. Active outputs and Google Doc now use 137 reviews. The main workbook is synchronized with the active 137-review CSV. Proposed full-corpus annotation changes have not been adopted.
 

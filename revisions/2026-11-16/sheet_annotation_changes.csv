@@ -1,0 +1,60 @@
+﻿ReviewID,Field,Before,After
+REV-005,LanguageClassification,Malay,English
+REV-005,CodeSwitchingType,N/A,Intra-sentential
+REV-005,Notes_Prompt,Pure Malay review.,Malay wording with English 'seller' in 'Terbaik seller!'; seller is treated as English wording for this annotation.
+REV-014,CodeSwitchingType,Tag Switching,Inter-sentential
+REV-014,Notes_Prompt,Malay cooking instruction ending in English appraisal with tag 'kan'.,Malay sentence followed by an English sentence ending with discourse tag 'kan'; sentence-level alternation takes priority over tag switching.
+REV-015,CodeSwitchingType,Inter-sentential,Intra-sentential
+REV-015,Notes_Prompt,Malay sensory claim followed by English elaborations.,English 'paste' is treated as English wording within Malay 'Sambal paste dia wangi gila'; intra-sentential mixing takes priority over later sentence-level alternation.
+REV-021,CodeSwitchingType,Inter-sentential,Intra-sentential
+REV-021,Notes_Prompt,English lead sentence followed by nostalgic Malay exclamation.,English first sentence followed by Malay wording containing English 'addicted' within the second sentence.
+REV-022,CodeSwitchingType,Inter-sentential,Intra-sentential
+REV-022,Notes_Prompt,Malay delivery complaint followed by English damaged packaging report.,English 'Delivery' and 'almost one week' mix with Malay 'lambat gila' and 'baru sampai' within the first sentence.
+REV-023,CodeSwitchingType,Intra-sentential,Inter-sentential
+REV-023,Notes_Prompt,English packaging terms with Malay status and English seller praise.,"English packaging statement, followed by a Malay sentence about intact delivery, then English seller praise."
+REV-024,Notes_Prompt,English aphorism followed by Malay soup viscosity analysis.,English 'and' is inserted in Malay wording: 'Rasa kari pekat and kuah dia tak cair'.
+REV-026,CodeSwitchingType,Tag Switching,Intra-sentential
+REV-026,Notes_Prompt,Code-switch with price comparison and 'boleh lah' particle.,Malay 'Rasa' and 'agak' mix with English price wording in the first sentence; 'lah' does not override this mixing.
+REV-029,CodeSwitchingType,Tag Switching,Intra-sentential
+REV-029,Notes_Prompt,Malaysian conversational tag 'Wehh' with English satisfaction expression.,Malay 'berpeluh satu dahi' and English 'but so satisfying' occur within one sentence; the tag 'wehh' does not override this mixing.
+REV-058,CodeSwitchingType,Inter-sentential,Intra-sentential
+REV-058,Notes_Prompt,"Malay sensory opener, English sensory middle, Malay commercial promise.","English 'creamy' appears within Malay wording, and 'Akan repeat order lagi' also mixes languages within a sentence."
+REV-059,CodeSwitchingType,Inter-sentential,Intra-sentential
+REV-059,Notes_Prompt,English shock statement followed by Malay flavor critique.,Malay 'Rasa pedas melampau' continues with English 'without any sweet or savory balance' within one sentence.
+REV-064,CodeSwitchingType,Inter-sentential,Intra-sentential
+REV-064,Notes_Prompt,English timeline complaint with Malay damage report.,Malay 'Kotak kemek' and 'pecah' mix with English 'and packaging' and 'inside' within the second sentence.
+REV-067,CodeSwitchingType,Tag Switching,Inter-sentential
+REV-067,Notes_Prompt,English culinary description with colloquial Malay leisure clause and tag 'wehh'.,English product description followed by a Malay sentence about the eating experience; Korea is a proper name and wehh does not introduce English mixing.
+REV-AI-003,CodeSwitchingType,Inter-sentential,Intra-sentential
+REV-AI-003,Notes_Prompt,Negative sentiment generation using seed REV-004.,"Negative sentiment generation using seed REV-004.
+Annotation review: Malay 'tak rasa' mixes with English 'Very salty' and 'authentic ... at all' within the second sentence."
+REV-AI-009,CodeSwitchingType,Tag Switching,Intra-sentential
+REV-AI-009,Notes_Prompt,Synthesize tag-switching praise using Malaysian discourse marker 'lah' from REV-011.,"Synthesize tag-switching praise using Malaysian discourse marker 'lah' from REV-011.
+Annotation review: Malay 'Rasa macam' mixes with English 'authentic Malay cuisine, highly recommended' beyond the tag lah."
+REV-AI-012,CodeSwitchingType,Tag Switching,Intra-sentential
+REV-AI-012,Notes_Prompt,Synthesize tag-switching review using 'kan' particle from REV-014.,"Synthesize tag-switching review using 'kan' particle from REV-014.
+Annotation review: Malay 'Campur telur mata separuh masak' continues with English 'makes the curry soup so rich'; kan is an additional tag."
+REV-AI-014,CodeSwitchingType,Inter-sentential,Intra-sentential
+REV-AI-014,Notes_Prompt,Generate extreme heat complaint with inter-sentential language switch from REV-016.,"Generate extreme heat complaint with inter-sentential language switch from REV-016.
+Annotation review: Malay 'Sakit tekak teruk' continues with English 'after eating half packet'; the second sentence also mixes languages."
+REV-AI-017,CodeSwitchingType,Intra-sentential,Inter-sentential
+REV-AI-017,Notes_Prompt,Synthesize mellow spicy variant review with Manglish superlative from REV-019.,"Synthesize mellow spicy variant review with Manglish superlative from REV-019.
+Annotation review: English first sentence followed by Malay flavour evaluation; Buldak is a neutral product/food name."
+REV-AI-023,CodeSwitchingType,Intra-sentential,Inter-sentential
+REV-AI-023,Notes_Prompt,Synthesize authentic laksa broth comparison from REV-025.,"Synthesize authentic laksa broth comparison from REV-025.
+Annotation review: English texture description followed by a Malay broth comparison; laksa is treated as a neutral food name."
+REV-AI-024,CodeSwitchingType,Tag Switching,Intra-sentential
+REV-AI-024,Notes_Prompt,Generate price-sensitive review with 'lah' tag from REV-026.,"Generate price-sensitive review with 'lah' tag from REV-026.
+Annotation review: Malay 'Sedap tapi harga agak mahal' continues with English 'for instant food'; lah does not override the mixing."
+REV-AI-027,CodeSwitchingType,Tag Switching,Intra-sentential
+REV-AI-027,Notes_Prompt,Synthesize spicy challenge reaction using Malaysian tag 'wehh' from REV-029.,"Synthesize spicy challenge reaction using Malaysian tag 'wehh' from REV-029.
+Annotation review: English 'spicy noodles' occurs within Malay 'Makan ... sambil berpeluh ketiak'; wehh is an additional tag."
+REV-AI-055,CodeSwitchingType,Tag Switching,Intra-sentential
+REV-AI-055,Notes_Prompt,Synthesize price-performance comparison with discourse marker 'lah' from REV-057.,"Synthesize price-performance comparison with discourse marker 'lah' from REV-057.
+Annotation review: English 'Cheaper alternative to Korean ramen' continues with Malay 'tapi rasa tak kalah sedap'; lah does not override this mixing."
+REV-AI-065,CodeSwitchingType,Tag Switching,Intra-sentential
+REV-AI-065,Notes_Prompt,Synthesize tag-switching review with Malaysian leisure slang 'chill layan' and 'kan' from REV-067.,"Synthesize tag-switching review with Malaysian leisure slang 'chill layan' and 'kan' from REV-067.
+Annotation review: English 'chill' is treated as English wording within Malay 'Makan sambil ... layan ... memang terbaik'; kan does not override this mixing."
+REV-AI-067,CodeSwitchingType,Tag Switching,Intra-sentential
+REV-AI-067,Notes_Prompt,Synthesize tag-switching review with 'lah' focusing on noodle sauce coating from REV-001.,"Synthesize tag-switching review with 'lah' focusing on noodle sauce coating from REV-001.
+Annotation review: Malay 'Rasa ... padu' mixes with English 'and highly addictive' within the second sentence, beyond lah and neutral food terminology."

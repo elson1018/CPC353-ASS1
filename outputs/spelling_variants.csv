@@ -1,7 +1,5 @@
 DataOrigin,Family,ObservedForm,Occurrences,DistinctReviews,ReviewIDs
-Self-Collected (Real),gila/giler,gila,5,5,REV-006; REV-015; REV-022; REV-025; REV-057
-Self-Collected (Real),gila/giler,giler,1,1,REV-001
-Self-Collected (Real),sedap repeated-final-p,sedap,6,6,REV-001; REV-006; REV-018; REV-057; REV-060; REV-066
-AI-Generated (LLM),gila/giler,gila,2,2,REV-AI-026; REV-AI-060
-AI-Generated (LLM),gila/giler,giler,1,1,REV-AI-001
-AI-Generated (LLM),sedap repeated-final-p,sedap,5,5,REV-AI-014; REV-AI-024; REV-AI-028; REV-AI-055; REV-AI-058
+Self-Collected (Real),gila/giler,gila,2,2,REV-004; REV-058
+Self-Collected (Real),sedap repeated-final-p,sedap,8,8,REV-004; REV-015; REV-028; REV-036; REV-052; REV-058; REV-063; REV-068
+Self-Collected (Real),sedap repeated-final-p,sedappp,1,1,REV-024
+AI-Generated (LLM),sedap repeated-final-p,sedap,6,6,REV-AI-010; REV-AI-015; REV-AI-028; REV-AI-054; REV-AI-060; REV-AI-065

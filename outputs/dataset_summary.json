@@ -1,28 +1,28 @@
 {
   "cleaning": {
-    "collected": 137,
+    "collected": 142,
     "rejected_invalid": 0,
     "removed_duplicate_texts": 0,
-    "retained": 137
+    "retained": 142
   },
   "language_distribution": {
-    "Code-switched": 87,
-    "English": 23,
-    "Malay": 23,
-    "Other/uncertain": 4
+    "Code-switched": 79,
+    "English": 46,
+    "Malay": 11,
+    "Other/uncertain": 6
   },
   "origins": {
-    "Self-Collected (Real)": 69,
-    "AI-Generated (LLM)": 68
+    "Self-Collected (Real)": 70,
+    "AI-Generated (LLM)": 72
   },
   "rating_distribution": {
-    "1": 9,
-    "2": 11,
-    "3": 10,
-    "4": 42,
-    "5": 65
+    "1": 3,
+    "2": 2,
+    "3": 3,
+    "4": 2,
+    "5": 132
   },
-  "manual_review_flags": 10,
+  "manual_review_flags": 0,
   "provenance_verified": false,
   "method": {
     "unit": "complete review; n-grams and KWIC bounded by heuristic sentences",
