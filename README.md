@@ -14,7 +14,6 @@ Python 3.10 or later; no third-party packages required.
 
 ```bash
 python3 nlp_text_analysis.py
-python3 -m unittest discover -s tests -v
 ```
 
 Custom input/output:
